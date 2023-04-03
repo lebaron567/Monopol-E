@@ -18,5 +18,5 @@
 
 
 ## **MEMBERS** 
-- *ARr0x `Arthur Lacombe`
+- *ARr0x `Arthur Lacombe`*
 - *lebaron567 `Émeric Barotin`*

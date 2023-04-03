@@ -1,0 +1,17 @@
+body{
+    margin:0;
+    padding:0;
+    background:rgb(56, 52, 52);
+    width:100%;
+    text-align:center
+    
+}
+#gameBoard{
+    width:800px;
+    height:700px;
+    position:absolute;            
+    top: 50%;                        
+    transform: translate(-50%, -50%) ;
+    background:rgb(10, 134, 139);
+    border:2px solid white
+}

@@ -2,17 +2,17 @@
 
 ## **DESCRIPTION** 
 
-*Online Monopoly cupteur version*
+*Online Monopoly computer version*
 
 
 ## **HOW TO INSTALL** 
 
-- * ``*
+- * `need to be completed`*
 
 
 ## **HOW TO LAUNCH** 
 
-- * ``*
+- * ``need to be completed`*
 
 
 

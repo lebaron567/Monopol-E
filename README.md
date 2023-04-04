@@ -12,7 +12,7 @@
 
 ## **HOW TO LAUNCH** 
 
-- * ``need to be completed`*
+- * `need to be completed`*
 
 
 

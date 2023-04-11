@@ -36,7 +36,7 @@ const Grille = () => {
     <div class="div30" id="case" > </div>
     <div class="div31" id="case" > </div>
     <div class="div32" id="case" > </div>
-    </div>)
+    </div>  )
 };
 
 

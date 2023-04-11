@@ -12,119 +12,119 @@
         "axe": 1,
         "pos": 3
     },{
-        "type": "change",
+        "type": "chance",
         "axe": 1,
         "pos": 4
     },{
-        "type": "depart",
+        "type": "central",
         "axe": 1,
         "pos": 5
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 1,
         "pos": 6
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 1,
         "pos": 7
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 1,
         "pos": 8
     },{
-        "type": "depart",
+        "type": "ventre",
         "axe": 2,
         "pos": 1
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 2,
         "pos": 2
     },{
-        "type": "depart",
+        "type": "ventilation",
         "axe": 2,
         "pos": 3
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 2,
         "pos": 4
     },{
-        "type": "depart",
+        "type": "central",
         "axe": 2,
         "pos": 5
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 2,
         "pos": 6
     },{
-        "type": "depart",
+        "type": "ventilation",
         "axe": 2,
         "pos": 7
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 2,
         "pos": 8
     },{
-        "type": "depart",
+        "type": "overclocking",
         "axe": 3,
         "pos": 1
     },{
-        "type": "depart",
+        "type": "chance",
         "axe": 3,
         "pos": 2
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 3,
         "pos": 3
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 3,
         "pos": 4
     },{
-        "type": "depart",
+        "type": "central",
         "axe": 3,
         "pos": 5
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 3,
         "pos": 6
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 3,
         "pos": 7
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 3,
         "pos": 8
     },{
-        "type": "depart",
+        "type": "tour du monde",
         "axe": 4,
         "pos": 1
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 4,
         "pos": 2
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 4,
         "pos": 3
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 4,
         "pos": 4
     },{
-        "type": "depart",
+        "type": "central",
         "axe": 4,
         "pos": 5
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 4,
         "pos": 6
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 4,
         "pos": 7
     },{
-        "type": "depart",
+        "type": "ordinateur",
         "axe": 4,
         "pos": 8
     }

@@ -1,0 +1,131 @@
+[
+    {
+      "type": "depart",
+      "axe": 1,
+      "pos": 1
+    },{
+        "type": "ordinateur",
+        "axe": 1,
+        "pos": 2
+    },{
+        "type": "ordinateur",
+        "axe": 1,
+        "pos": 3
+    },{
+        "type": "change",
+        "axe": 1,
+        "pos": 4
+    },{
+        "type": "depart",
+        "axe": 1,
+        "pos": 5
+    },{
+        "type": "depart",
+        "axe": 1,
+        "pos": 6
+    },{
+        "type": "depart",
+        "axe": 1,
+        "pos": 7
+    },{
+        "type": "depart",
+        "axe": 1,
+        "pos": 8
+    },{
+        "type": "depart",
+        "axe": 2,
+        "pos": 1
+    },{
+        "type": "depart",
+        "axe": 2,
+        "pos": 2
+    },{
+        "type": "depart",
+        "axe": 2,
+        "pos": 3
+    },{
+        "type": "depart",
+        "axe": 2,
+        "pos": 4
+    },{
+        "type": "depart",
+        "axe": 2,
+        "pos": 5
+    },{
+        "type": "depart",
+        "axe": 2,
+        "pos": 6
+    },{
+        "type": "depart",
+        "axe": 2,
+        "pos": 7
+    },{
+        "type": "depart",
+        "axe": 2,
+        "pos": 8
+    },{
+        "type": "depart",
+        "axe": 3,
+        "pos": 1
+    },{
+        "type": "depart",
+        "axe": 3,
+        "pos": 2
+    },{
+        "type": "depart",
+        "axe": 3,
+        "pos": 3
+    },{
+        "type": "depart",
+        "axe": 3,
+        "pos": 4
+    },{
+        "type": "depart",
+        "axe": 3,
+        "pos": 5
+    },{
+        "type": "depart",
+        "axe": 3,
+        "pos": 6
+    },{
+        "type": "depart",
+        "axe": 3,
+        "pos": 7
+    },{
+        "type": "depart",
+        "axe": 3,
+        "pos": 8
+    },{
+        "type": "depart",
+        "axe": 4,
+        "pos": 1
+    },{
+        "type": "depart",
+        "axe": 4,
+        "pos": 2
+    },{
+        "type": "depart",
+        "axe": 4,
+        "pos": 3
+    },{
+        "type": "depart",
+        "axe": 4,
+        "pos": 4
+    },{
+        "type": "depart",
+        "axe": 4,
+        "pos": 5
+    },{
+        "type": "depart",
+        "axe": 4,
+        "pos": 6
+    },{
+        "type": "depart",
+        "axe": 4,
+        "pos": 7
+    },{
+        "type": "depart",
+        "axe": 4,
+        "pos": 8
+    }
+]

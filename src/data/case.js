@@ -1,4 +1,4 @@
-[
+export  const stockData =[
     {
       "type": "depart",
       "axe": 1,

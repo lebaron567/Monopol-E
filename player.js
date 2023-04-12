@@ -1,4 +1,4 @@
-class Player{
+export class Player{
     constructor(){
         this.NBcase = 0
         this.money = 500
@@ -31,25 +31,3 @@ class Player{
         this.draw();
     }
 }
-
-const player = new Player();
-
-player.update()
-
-const animationLoop= ()=>{
-    requestAnimationFrame(animationLoop);
-    player.update();
-   frames++;
-    
-}
-animationLoop();
-
-addEventListener('keydown',({key})=>{
-    
-    switch(key){
-    case ' ':
-        console.log('spase');
-        keys.spase.pressed = true;
-        break;
-    } 
- })    

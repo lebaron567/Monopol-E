@@ -1,6 +1,6 @@
 import {stockData} from './src/data/case.js'
 
-class Case{
+export class Case{
     constructor(type,axe,pos){
         this.type = type
         this.axe = axe

@@ -6,21 +6,24 @@ body{
     text-align:center
     
 }
-
-#gameBoard{
-    width:800px;
-    height:700px;
-    position:absolute;            
-    top: 50%;                        
-    transform: translate(-50%, -50%) ;
-    background:rgb(10, 134, 139);
-    border:2px solid rgb(0, 0, 0)
+body{
+    margin:0;
+    padding:0;
+    background:rgb(56, 52, 52);
+    width:100%;
+    text-align:center
+    
 }
+
 .parent {
     display: grid;
-    grid-template-columns: repeat(11, 1fr);
-    grid-template-rows: repeat(11, 1fr);
-    grid-row-gap: 100px;
+    height: 80vh;
+    width: 80vh;
+    grid-template-columns: 5% auto auto auto auto auto auto auto 11% 6%  ;
+    grid-template-rows: 4% auto auto auto auto auto auto auto 11% 4%;
+    background-image: url(../img/plateau.png) ;
+    background-position: center;
+    background-size: cover;
 }
     
 .div1 { grid-area: 10 / 10 / 12 / 12; }

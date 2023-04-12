@@ -11,7 +11,7 @@ export const stockData =[
         "nom": "pc portable",
         "prix":100,
         "louer":20,
-        "amelioration" :[40,60,80,110],
+        "amelioration" :[50,100,300,500],
         "prixRAM": 30,
         "prixCPU": 50
     },{
@@ -22,7 +22,7 @@ export const stockData =[
         "nom": "hp compad" ,      
         "prix":130,
         "louer":30,
-        "amelioration" :[50,70,90,150],
+        "amelioration" :[50,250,350,600],
         "prixRAM": 35,
         "prixCPU": 60
     },{
@@ -41,7 +41,7 @@ export const stockData =[
         "nom": "thomson neo" ,      
         "prix":230,
         "louer":45,
-        "amelioration" :[90,120,160,250],
+        "amelioration" :[150,350,500,750],
         "prixRAM": 70,
         "prixCPU": 150
     },{
@@ -52,7 +52,7 @@ export const stockData =[
         "nom": "neo touch",
         "prix":260,
         "louer":60,
-        "amelioration" :[150,200,260,310],
+        "amelioration" :[190,400,600,800],
         "prixRAM": 100,
         "prixCPU": 200
     },{
@@ -62,7 +62,7 @@ export const stockData =[
         "nom": "neo 3K",
         "prix":300,
         "louer":100,
-        "amelioration" :[170,200,320,370],
+        "amelioration" :[200,450,670,900],
         "prixRAM": 130,
         "prixCPU": 250
     },{
@@ -77,7 +77,7 @@ export const stockData =[
         "nom": "dell pc sff",
         "prix":340,
         "louer":160,
-        "amelioration" :[210,340,410,580],
+        "amelioration" :[350,540,850,1100],
         "prixRAM": 180,
         "prixCPU": 300
     },{
@@ -92,7 +92,7 @@ export const stockData =[
         "nom": "dell pc optiplex",
         "prix":360,
         "louer":190,
-        "amelioration" :[230,430,630,750],
+        "amelioration" :[330,730,930,1200],
         "prixRAM": 210,
         "prixCPU": 330
     },{
@@ -107,7 +107,7 @@ export const stockData =[
         "nom": "Acer Aspire 3 '15,6' ",
         "prix":410,
         "louer":210,
-        "amelioration" :[260,500,680,810],
+        "amelioration" :[460,700,1000,1410],
         "prixRAM": 240,
         "prixCPU": 390
     },{
@@ -118,7 +118,7 @@ export const stockData =[
         "nom": "Acer Chromebook Spin",
         "prix":500,
         "louer":260,
-        "amelioration" :[330,590,750,920],
+        "amelioration" :[530,890,1350,1550],
         "prixRAM": 310,
         "prixCPU": 350,
     },{
@@ -129,7 +129,7 @@ export const stockData =[
         "nom": "Acer Aspire 3 '17,3'",
         "prix":590,
         "louer":300,
-        "amelioration" :[500,710,920,1100],
+        "amelioration" :[600,800,1470,1600],
         "prixRAM": 360,
         "prixCPU": 380,
     },{
@@ -148,7 +148,7 @@ export const stockData =[
         "nom": "MSI GF63 Thin 11UC",
         "prix":750,
         "louer":430,
-        "amelioration" :[720,950,1300,1500],
+        "amelioration" :[720,950,1400,1700],
         "prixRAM": 420,
         "prixCPU": 450,
 
@@ -160,7 +160,7 @@ export const stockData =[
         "nom": "MSI - GF66 11UC",
         "prix":900,
         "louer":480,
-        "amelioration" :[800,1250,1460,1680],
+        "amelioration" :[800,1350,1560,1880],
         "prixRAM": 450,
         "prixCPU": 470,
     },{
@@ -190,25 +190,47 @@ export const stockData =[
         "nom": "Asus ROG Strix G17",
         "prix":1340,
         "louer":580,
-        "amelioration" :[950,1560,2000,2430],
+        "amelioration" :[950,1660,2300,2430],
         "prixRAM": 600,
         "prixCPU": 670,
     },{
         "type": "tour du monde",
         "axe": 4,
-        "pos": 1
+        "pos": 1,
     },{
         "type": "ordinateur",
+        "groupe": "Apple",
         "axe": 4,
-        "pos": 2
+        "pos": 2,
+        "nom":"MacBook Air",
+        "prix":1490,
+        "louer":640,
+        "amelioration" :[1100,1880,2340,3000],
+        "prixRAM": 670,
+        "prixCPU": 680,
     },{
         "type": "ordinateur",
+        "groupe": "Apple",
         "axe": 4,
-        "pos": 3
+        "pos": 3,
+        "nom": "MacBook Pro 13",
+        "prix":1740,
+        "louer":680,
+        "amelioration" :[1350,2200,2900,3720],
+        "prixRAM": 680,
+        "prixCPU": 700,
+
     },{
         "type": "ordinateur",
+        "groupe": "Apple",
         "axe": 4,
-        "pos": 4
+        "pos": 4,
+        "nom": "MacBook Pro 16",
+        "prix":1,
+        "louer":1,
+        "amelioration" :[1,2200,2900,1],
+        "prixRAM": 1,
+        "prixCPU": 1,
     },{
         "type": "central",
         "axe": 4,

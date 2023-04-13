@@ -79,4 +79,5 @@ animationLoop();
 export  function addEventListener() {
     
     console.log(2)
- }  
+}  
+

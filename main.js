@@ -1,3 +1,6 @@
+import Player from "./player.js"
+
+
 const board = document.querySelector('#gameBoard');
 const c = board.getContext('2d');
 
@@ -60,30 +63,6 @@ for (let i=0; i<=6; i++){
     cordener.push(new Case(board.width-100,(board.height-200)/7*i-1+100, 100, (board.height-200)/7+1))
 }
 
-class Player{
-    constructor(){
-        this.NBcase = 0
-        this.money = 500
-        this.estate = []
-    }
-
-    draw(){
-        c.fillStyle = 'white';
-        c.fillRect(cordener[this.NBcase].x+5,cordener[this.NBcase].y+5, 40,40);
-    }
-
-    update(){
-        if (keys.spase.pressed){
-            this.NBcase ++
-            keys.spase.pressed = false
-            c.clearRect(cordener[this.NBcase-1].x+4,cordener[this.NBcase-1].y+4, 42,42);
-        }
-        if(this.NBcase>31){
-            this.NBcase =0
-        }
-        this.draw();
-    }
-}
 
 const player = new Player();
 
@@ -100,4 +79,5 @@ animationLoop();
 export  function addEventListener() {
     
     console.log(2)
- }  
+}  
+

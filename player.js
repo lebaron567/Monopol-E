@@ -1,4 +1,4 @@
-class Player{
+export class Player{
     constructor(){
         this.NBcase = 0
         this.money = 500
@@ -9,9 +9,9 @@ class Player{
 
 
     throw(){
-        const dée1 = Math.floor(Math.random() * 6);
-        const dée2 = Math.floor(Math.random() * 6);
-        console.log(dée1)
+        const dee1 = Math.floor(Math.random() * 6);
+        const dee2 = Math.floor(Math.random() * 6);
+        console.log(`${dee1}+${dee2}=${dee1+dee2}`)
     }
 
     draw(){
@@ -31,25 +31,3 @@ class Player{
         this.draw();
     }
 }
-
-const player = new Player();
-
-player.update()
-
-const animationLoop= ()=>{
-    requestAnimationFrame(animationLoop);
-    player.update();
-   frames++;
-    
-}
-animationLoop();
-
-addEventListener('keydown',({key})=>{
-    
-    switch(key){
-    case ' ':
-        console.log('spase');
-        keys.spase.pressed = true;
-        break;
-    } 
- })    

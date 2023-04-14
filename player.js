@@ -1,11 +1,11 @@
 export class Player{
-    constructor(){
-        this.NBcase = 0
-        this.money = 500
-        this.estate = []
-        this.axe = axe
-        this.pos = pos
-    }
+   
+        NBcase = 0
+        money = 500
+        estate = []
+        // axe = axe  a definir
+        // tpos = pos  adefinir
+    
 
 
     throw(){

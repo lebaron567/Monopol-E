@@ -13,12 +13,5 @@ class Case{
 	isPropriete(){
 		return this.type === "ordinateur" || this.type === "central" || this.type === "ventilation" ;
 	}
-};
-
-
-  
-
-
-console.log(stockData); 
-
+}
 

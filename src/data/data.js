@@ -32,7 +32,10 @@ export const stockData =[
     },{
         "type": "central",
         "axe": 1,
-        "pos": 5
+        "pos": 5,
+        "prix":1000,
+        "louer":[500,1000,2000,3000]
+        
     },{
         "type": "computer",
         "groupe": "Thomson",
@@ -98,7 +101,9 @@ export const stockData =[
     },{
         "type": "central",
         "axe": 2,
-        "pos": 5
+        "pos": 5,
+        "prix":1000,
+        "louer":[500,1000,2000,3000]
     },{
         "type": "computer",
         "groupe":"acer",
@@ -166,7 +171,9 @@ export const stockData =[
     },{
         "type": "central",
         "axe": 3,
-        "pos": 5
+        "pos": 5,
+        "prix":1000,
+        "louer":[500,1000,2000,3000]
     },{
         "type": "computer",
         "groupe": "asus",
@@ -225,27 +232,43 @@ export const stockData =[
         "groupe": "Apple",
         "axe": 4,
         "pos": 4,
-        "name": "MacBook Pro 16",
-        "price":1,
-        "rent":1,
-        "upgrade" :[1,2200,2900,1],
-        "RAMPrice": 1,
-        "CPUPrice": 1,
+        "nom": "MacBook Pro 16",
+        "prix":1950,
+        "louer":750,
+        "amelioration" :[1520,2780,3400,3920],
+        "prixRAM": 700,
+        "prixCPU": 730,
     },{
         "type": "central",
         "axe": 4,
-        "pos": 5
+        "pos": 5,
+        "prix":1000,
+        "louer":[500,1000,2000,3000]
     },{
-        "type": "computer",
+        "type": "ordinateur",
+        "groupe":"Alienware",
         "axe": 4,
-        "pos": 6
+        "pos": 6,
+        "nom": "Alienware m15 R6",
+        "prix":2300,
+        "louer":800,
+        "amelioration" :[1620,2970,3770,4670],
+        "prixRAM": 700,
+        "prixCPU": 730,
     },{
         "type": "taxe",
         "axe": 4,
         "pos": 7
     },{
-        "type": "computer",
+        "type": "ordinateur",
+        "groupe":"Alienware",
         "axe": 4,
-        "pos": 8
+        "pos": 8,
+        "nom": "Alienware m16",
+        "prix":2600,
+        "louer":900,
+        "amelioration" :[1800,3270,4100,5000],
+        "prixRAM": 750,
+        "prixCPU": 800,
     }
 ]

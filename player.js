@@ -1,12 +1,14 @@
 export class Player{
-   
-        NBcase = 0
-        money = 500
-        estate = []
-        // axe = axe  a definir
-        // tpos = pos  adefinir
-    
+        
+    NBcase = 0
+    money = 500
+    estate = []
+    // axe = axe  a definir
+    // tpos = pos  adefinir
 
+    constructor(name){
+        this.name=name
+    }
 
     throw(){
         const dee1 = Math.floor(Math.random() * 6);
@@ -30,4 +32,17 @@ export class Player{
         }
         this.draw();
     }
+    addOrLessMoney(num){
+        this.money=this.money+num
+    }
+    displayProperties(computer){
+        let result =[]
+        for (let i=0; i<computer.length; i++){
+            if(computer[i].owner===this.name){
+                result.push(computer[i].name)
+            }
+        }
+        return result
+    }
+
 }

@@ -1,7 +1,6 @@
-import Player from "./player.js"
+import { Player } from "./player.js"
 
 import { initialize } from "./initialization.js";
-
 
 
 
@@ -71,21 +70,24 @@ const displayBoard = () => {
         cordener.push(new Case(board.width-100,(board.height-200)/7*i-1+100, 100, (board.height-200)/7+1))
     }
 }
+const computer = initialize()
 
-const player = new Player();
+const player = new Player("nobody");
+console.log(player.displayProperties(computer))
 
-player.update()
 
-const animationLoop= ()=>{
-    requestAnimationFrame(animationLoop);
-    player.update();
-   frames++;
+// player.update()
+
+// const animationLoop= ()=>{
+//     requestAnimationFrame(animationLoop);
+//     player.update();
+//    frames++;
     
-}
-animationLoop();
+// }
+// animationLoop();
 
-export  function addEventListener() {
+// export  function addEventListener() {
     
-    console.log(2)
-}  
+//     console.log(2)
+// }  
 

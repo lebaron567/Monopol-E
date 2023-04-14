@@ -4,22 +4,22 @@ export const stockData =[
       "axe": 1,
       "pos": 1
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe": "compaq",
         "axe": 1,
         "pos": 2,
-        "nom": "pc portable",
+        "name": "pc portable",
         "price":100,
         "rent":20,
         "upgrade" :[50,100,300,500],
         "RAMPrice": 30,
         "CPUPrice": 50
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe": "compaq",
         "axe": 1,
         "pos": 3,
-        "nom": "hp compad" ,      
+        "name": "hp compad" ,      
         "price":130,
         "rent":30,
         "upgrade" :[50,250,350,600],
@@ -34,32 +34,32 @@ export const stockData =[
         "axe": 1,
         "pos": 5
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe": "Thomson",
         "axe": 1,
         "pos": 6,
-        "nom": "thomson neo" ,      
+        "name": "thomson neo" ,      
         "price":230,
         "rent":45,
         "upgrade" :[150,350,500,750],
         "RAMPrice": 70,
         "CPUPrice": 150
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe": "Thomson",
         "axe": 1,
         "pos": 7,
-        "nom": "neo touch",
+        "name": "neo touch",
         "price":260,
         "rent":60,
         "upgrade" :[190,400,600,800],
         "RAMPrice": 100,
         "CPUPrice": 200
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "axe": 1,
         "pos": 8,
-        "nom": "neo 3K",
+        "name": "neo 3K",
         "price":300,
         "rent":100,
         "upgrade" :[200,450,670,900],
@@ -70,11 +70,11 @@ export const stockData =[
         "axe": 2,
         "pos": 1
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe": "dell",
         "axe": 2,
         "pos": 2,
-        "nom": "dell pc sff",
+        "name": "dell pc sff",
         "price":340,
         "rent":160,
         "upgrade" :[350,540,850,1100],
@@ -85,11 +85,11 @@ export const stockData =[
         "axe": 2,
         "pos": 3
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe": "dell",
         "axe": 2,
         "pos": 4,
-        "nom": "dell pc optiplex",
+        "name": "dell pc optiplex",
         "price":360,
         "rent":190,
         "upgrade" :[330,730,930,1200],
@@ -100,33 +100,33 @@ export const stockData =[
         "axe": 2,
         "pos": 5
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe":"acer",
         "axe": 2,
         "pos": 6,
-        "nom": "Acer Aspire 3 '15,6' ",
+        "name": "Acer Aspire 3 '15,6' ",
         "price":410,
         "rent":210,
         "upgrade" :[460,700,1000,1410],
         "RAMPrice": 240,
         "CPUPrice": 390
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe":"acer",
         "axe": 2,
         "pos": 7,
-        "nom": "Acer Chromebook Spin",
+        "name": "Acer Chromebook Spin",
         "price":500,
         "rent":260,
         "upgrade" :[530,890,1350,1550],
         "RAMPrice": 310,
         "CPUPrice": 350,
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe":"acer",
         "axe": 2,
         "pos": 8,
-        "nom": "Acer Aspire 3 '17,3'",
+        "name": "Acer Aspire 3 '17,3'",
         "price":590,
         "rent":300,
         "upgrade" :[600,800,1470,1600],
@@ -141,11 +141,11 @@ export const stockData =[
         "axe": 3,
         "pos": 2
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe": "msi",
         "axe": 3,
         "pos": 3,
-        "nom": "MSI GF63 Thin 11UC",
+        "name": "MSI GF63 Thin 11UC",
         "price":750,
         "rent":430,
         "upgrade" :[720,950,1400,1700],
@@ -153,11 +153,11 @@ export const stockData =[
         "CPUPrice": 450,
 
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe": "msi",
         "axe": 3,
         "pos": 4,
-        "nom": "MSI - GF66 11UC",
+        "name": "MSI - GF66 11UC",
         "price":900,
         "rent":480,
         "upgrade" :[800,1350,1560,1880],
@@ -168,11 +168,11 @@ export const stockData =[
         "axe": 3,
         "pos": 5
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe": "asus",
         "axe": 3,
         "pos": 6,
-        "nom": "Asus TUF Gaming",
+        "name": "Asus TUF Gaming",
         "price":1100,
         "rent":510,
         "upgrade" :[890,1480,1850,2110],
@@ -183,11 +183,11 @@ export const stockData =[
         "axe": 3,
         "pos": 7
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe": "asus",
         "axe": 3,
         "pos": 8,
-        "nom": "Asus ROG Strix G17",
+        "name": "Asus ROG Strix G17",
         "price":1340,
         "rent":580,
         "upgrade" :[950,1660,2300,2430],
@@ -198,22 +198,22 @@ export const stockData =[
         "axe": 4,
         "pos": 1,
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe": "Apple",
         "axe": 4,
         "pos": 2,
-        "nom":"MacBook Air",
+        "name":"MacBook Air",
         "price":1490,
         "rent":640,
         "upgrade" :[1100,1880,2340,3000],
         "RAMPrice": 670,
         "CPUPrice": 680,
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe": "Apple",
         "axe": 4,
         "pos": 3,
-        "nom": "MacBook Pro 13",
+        "name": "MacBook Pro 13",
         "price":1740,
         "rent":680,
         "upgrade" :[1350,2200,2900,3720],
@@ -221,11 +221,11 @@ export const stockData =[
         "CPUPrice": 700,
 
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "groupe": "Apple",
         "axe": 4,
         "pos": 4,
-        "nom": "MacBook Pro 16",
+        "name": "MacBook Pro 16",
         "price":1,
         "rent":1,
         "upgrade" :[1,2200,2900,1],
@@ -236,7 +236,7 @@ export const stockData =[
         "axe": 4,
         "pos": 5
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "axe": 4,
         "pos": 6
     },{
@@ -244,7 +244,7 @@ export const stockData =[
         "axe": 4,
         "pos": 7
     },{
-        "type": "ordinateur",
+        "type": "computer",
         "axe": 4,
         "pos": 8
     }

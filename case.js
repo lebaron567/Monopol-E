@@ -19,6 +19,6 @@ class Case{
   
 
 
-console.log(stockData); 
+console.log(stockData[1].type); 
 
 

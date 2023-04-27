@@ -60,6 +60,7 @@ export const stockData =[
         "CPUPrice": 200
     },{
         "type": "computer",
+        "groupe": "Thomson",
         "axe": 1,
         "pos": 8,
         "name": "neo 3K",

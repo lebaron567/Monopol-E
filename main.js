@@ -68,7 +68,8 @@ class Case{
 const computer = initialize()
 
 const player = new Player("nobody");
-console.log(player.displayProperties(computer))
+
+console.log(computer)
 
 
 

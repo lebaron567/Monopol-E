@@ -1,6 +1,4 @@
 import { Player } from "./player.js"
-window.Player = Player
-window.stockData = stockData
 var image = document.getElementById("source");
 const board = document.querySelector('#gameBoard');
 const c = board.getContext('2d');

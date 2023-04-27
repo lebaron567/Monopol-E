@@ -63,11 +63,11 @@ class Case{
         }
     }
 
-const computer = initialize()
 
+let cases = initialize()
+console.log(cases[1])
 const player = new Player("nobody");
-
-console.log(computer)
+console.log(player.displayProperties(cases[0]))
 
 
 

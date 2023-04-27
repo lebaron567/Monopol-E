@@ -1,12 +1,9 @@
 import { Player } from "./player.js"
 window.Player = Player
 window.stockData = stockData
-const board = document.querySelector('#gameBoard');
-const info = document.querySelector('.info_box');
-const c = board.getContext('2d');
 var image = document.getElementById("source");
-
-
+const board = document.querySelector('#gameBoard');
+const c = board.getContext('2d');
 board.width = board.clientWidth;
 board.height = board.clientHeight;
 
@@ -51,3 +48,31 @@ function  lance(){
 
 setInterval(anim,100)
 window.lance = lance
+
+
+import { initialize } from "./initialization.js";
+
+
+
+
+
+
+    let frames=0;
+    let cordener =[]
+
+class Case{
+    constructor(x,y,tailleX,tailleY){
+        this.x = x
+        this.y = y
+        this.tailleX = tailleX
+        this.tailleY = tailleY
+        }
+    }
+
+const computer = initialize()
+
+const player = new Player("nobody");
+console.log(player.displayProperties(computer))
+
+
+

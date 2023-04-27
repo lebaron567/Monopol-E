@@ -84,4 +84,17 @@ draw(){
     update(){
         this.draw();
     }
+    addOrLessMoney(num){
+        this.money=this.money+num
+    }
+    displayProperties(computer){
+        let result =[]
+        for (let i=0; i<computer.length; i++){
+            if(computer[i].owner===this.name){
+                result.push(computer[i].name)
+            }
+        }
+        return result
+    }
+
 }

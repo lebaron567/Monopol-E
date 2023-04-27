@@ -53,10 +53,6 @@ window.lance = lance
 import { initialize } from "./initialization.js";
 
 
-
-
-
-
     let frames=0;
     let cordener =[]
 
@@ -65,7 +61,7 @@ class Case{
         this.x = x
         this.y = y
         this.tailleX = tailleX
-        this.tailleY = tailleY
+            this.tailleY = tailleY
         }
     }
 

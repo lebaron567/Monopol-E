@@ -23,34 +23,33 @@ export class Player{
 
 
 
-throw(){
-    const dee1 = Math.floor(Math.random() * 6)+1;
-    const dee2 = Math.floor(Math.random() * 6)+1;
-    let deplasement = dee1 +dee2
-    if (deplasement + this.numCase >= 32){
-        this.numCase = this.numCase + deplasement-32
-    }else{
-        this.numCase = this.numCase + deplasement
+    throw(){
+        const dee1 = Math.floor(Math.random() * 6)+1;
+        const dee2 = Math.floor(Math.random() * 6)+1;
+        let deplasement = dee1 +dee2
+        if (deplasement + this.numCase >= 32){
+            this.numCase = this.numCase + deplasement-32
+        }else{
+            this.numCase = this.numCase + deplasement
+        }
+        this.axe = stockData[this.numCase].axe
+        this.pos = stockData[this.numCase].pos
+        console.log(this.numCase)
+        var div = document.createElement('div');
+        div.id = 'textInfo';
+        div.innerHTML = `${this.name} : lanser les dée: ${dee1} et ${dee2}. Vous avanser de ${dee1+dee2} casse`;
+        div.className = 'lancerDee';
+        info.prepend(div);
+        this.round = false
     }
-    this.axe = stockData[this.numCase].axe
-    this.pos = stockData[this.numCase].pos
-    console.log(this.numCase)
-    var div = document.createElement('div');
-    div.id = 'textInfo';
-    div.innerHTML = `${this.name} : lanser les dée: ${dee1} et ${dee2}. Vous avanser de ${dee1+dee2} casse`;
-    div.className = 'lancerDee';
- 
-    info.prepend(div);
-    this.round = false
-}
 
-draw(){
-    const decalage = [{L:20,l:20},{L:55,l:20},{L:20,l:45},{L:55,l:45}]
-    const cor =[6,5,4,3,2,1,0]
-    const couleur = ["red", "blue", "#FFFF00","#9400D3"]
-    c.beginPath();
-    c.fillStyle=couleur[this.numPlayer]
-    if(this.axe == 1){
+    draw(){
+        const decalage = [{L:20,l:20},{L:55,l:20},{L:20,l:45},{L:55,l:45}]
+        const cor =[6,5,4,3,2,1,0]
+        const couleur = ["red", "blue", "#FFFF00","#9400D3"]
+        c.beginPath();
+        c.fillStyle=couleur[this.numPlayer]
+        if(this.axe == 1){
         if(this.pos==1){
             c.arc(board.width-(board.width*0.15) + decalage[this.numPlayer].L,board.width-(board.width*0.136) + decalage[this.numPlayer].l,10,0, 2 * Math.PI);
         }else{
@@ -78,8 +77,8 @@ draw(){
             c.arc(board.width-(board.width*0.12) + decalage[this.numPlayer].L,(board.height*0.14)+(board.height*0.105*(this.pos-2)) + decalage[this.numPlayer].l,10,0, 2 * Math.PI)
         }
     }
-    c.fill();
-}
+        c.fill();
+    }
 
     update(){
         this.draw();

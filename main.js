@@ -70,10 +70,11 @@ const displayBoard = () => {
         cordener.push(new Case(board.width-100,(board.height-200)/7*i-1+100, 100, (board.height-200)/7+1))
     }
 }
-const computer = initialize()
 
+let cases = initialize()
+console.log(cases[1])
 const player = new Player("nobody");
-console.log(player.displayProperties(computer))
+console.log(player.displayProperties(cases[0]))
 
 
 // player.update()

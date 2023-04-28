@@ -1,11 +1,24 @@
  import { players } from "./main.js";
+ import { cases } from "./main.js";
  
  export function play(){
     for(var i= 0; i < players.length; i++){
         if(players[i].round){
             if(players[i].throw){
                 if(stockData[players[i].numCase].type == "computer" ){
-                    cardComputer(players[i])
+                    const found = cases[0].find(element => element.name == stockData[players[i].numCase].name );
+                    if (found.owner == "nobody"){
+                        cardComputer(players[i])
+                    }else{
+                        const player = players.find(element => found.owner == element.name );
+                        player.money += found.rent
+                        players[i].money += found.rent
+                        var div = document.createElement('div');
+                        div.id = 'textInfo';
+                        div.innerHTML = `${players[i].name} donne ${found.rent} $ a ${player.name}`;
+                        div.className = 'loyer';
+                        info.prepend(div);
+                    }
                 }else{
                     nextRound()
                 }

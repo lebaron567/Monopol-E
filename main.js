@@ -57,10 +57,10 @@ window.lance = lance
 
 
 
-let cases = initialize()
-console.log(cases[1])
+export let cases = initialize()
+console.log(cases[0])
 const player = new Player("nobody");
-console.log(player.displayProperties(cases[0]))
+console.log(player.displayProperties(cases[1]))
 
 
 function openForm() {
@@ -88,5 +88,5 @@ function nextRound(){
 }
 
 
-window.openForm =openForm
+window.openForm = openForm
 window.closeForm = closeForm

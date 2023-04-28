@@ -30,6 +30,7 @@
 function cardComputer(player){
     let computer = document.getElementById("computer")
     computer.style.display = "flex";
+    document.getElementById("titre").style.backgroundColor = stockData[player.numCase].couleur;
     document.getElementById("nameCard").innerHTML = stockData[player.numCase].name
     document.getElementById("prixAchat").innerHTML = stockData[player.numCase].price+"$"
     document.getElementById("loyer").innerHTML = stockData[player.numCase].rent+"$"

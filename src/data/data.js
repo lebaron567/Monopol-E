@@ -6,6 +6,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "compaq",
+        "couleur": "#7F0000",
         "axe": 1,
         "pos": 2,
         "name": "pc portable",
@@ -17,6 +18,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "compaq",
+        "couleur": "#7F0000",
         "axe": 1,
         "pos": 3,
         "name": "hp compad" ,      
@@ -39,6 +41,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "Thomson",
+        "couleur": "#00FFFF",
         "axe": 1,
         "pos": 6,
         "name": "thomson neo" ,      
@@ -50,6 +53,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "Thomson",
+        "couleur": "#00FFFF",
         "axe": 1,
         "pos": 7,
         "name": "neo touch",
@@ -61,6 +65,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "Thomson",
+        "couleur": "#00FFFF",
         "axe": 1,
         "pos": 8,
         "name": "neo 3K",
@@ -76,6 +81,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "dell",
+        "couleur": "FF00DC",
         "axe": 2,
         "pos": 2,
         "name": "dell pc sff",
@@ -91,6 +97,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "dell",
+        "couleur": "FF00DC",
         "axe": 2,
         "pos": 4,
         "name": "dell pc optiplex",
@@ -108,6 +115,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe":"acer",
+        "couleur": "FF6A00",
         "axe": 2,
         "pos": 6,
         "name": "Acer Aspire 3 '15,6' ",
@@ -119,6 +127,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe":"acer",
+        "couleur": "FF6A00",
         "axe": 2,
         "pos": 7,
         "name": "Acer Chromebook Spin",
@@ -130,6 +139,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe":"acer",
+        "couleur": "FF6A00",
         "axe": 2,
         "pos": 8,
         "name": "Acer Aspire 3 '17,3'",
@@ -149,6 +159,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "msi",
+        "couleur": "FFF607",
         "axe": 3,
         "pos": 3,
         "name": "MSI GF63 Thin 11UC",
@@ -161,6 +172,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "msi",
+        "couleur": "FFF607",
         "axe": 3,
         "pos": 4,
         "name": "MSI - GF66 11UC",
@@ -178,6 +190,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "asus",
+        "couleur": "FF0000",
         "axe": 3,
         "pos": 6,
         "name": "Asus TUF Gaming",
@@ -193,6 +206,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "asus",
+        "couleur": "FF0000",
         "axe": 3,
         "pos": 8,
         "name": "Asus ROG Strix G17",
@@ -208,6 +222,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "Apple",
+        "couleur": "4CFF00",
         "axe": 4,
         "pos": 2,
         "name":"MacBook Air",
@@ -219,6 +234,7 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "Apple",
+        "couleur": "4CFF00",
         "axe": 4,
         "pos": 3,
         "name": "MacBook Pro 13",
@@ -231,12 +247,13 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe": "Apple",
+        "couleur": "4CFF00",
         "axe": 4,
         "pos": 4,
         "name": "MacBook Pro 16",
         "price":1950,
         "rent":750,
-        "amelioration" :[1520,2780,3400,3920],
+        "upgrade" :[1520,2780,3400,3920],
         "RAMPrice": 700,
         "CPUPrice": 730,
     },{
@@ -248,12 +265,13 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe":"Alienware",
+        "couleur": "0026FF",
         "axe": 4,
         "pos": 6,
         "name": "Alienware m15 R6",
         "price":2300,
         "rent":800,
-        "amelioration" :[1620,2970,3770,4670],
+        "upgrade" :[1620,2970,3770,4670],
         "RAMPrice": 700,
         "CPUPrice": 730,
     },{
@@ -263,12 +281,13 @@ export const stockData =[
     },{
         "type": "computer",
         "groupe":"Alienware",
+        "couleur": "0026FF",
         "axe": 4,
         "pos": 8,
         "name": "Alienware m16",
         "price":2600,
         "rent":900,
-        "amelioration" :[1800,3270,4100,5000],
+        "upgrade" :[1800,3270,4100,5000],
         "RAMPrice": 750,
         "CPUPrice": 800,
     }

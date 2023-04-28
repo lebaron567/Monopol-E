@@ -4,10 +4,55 @@
         <title>Monopol-E</title>
     </head>
     <body>
+        <button class="open-button" onclick="play()"><strong>Ouvrir la forme</strong></button>
         <canvas id="gameBoard" ></div></canvas>
         <img src="./src/assets/img/rouge.png" id="source">
         <div class="info_box " id="idInfoBox"></div>
         <script  src="main.js" type="module"> </script>
         <button class="bou"  onclick="lance()">lancer</button>
+        <div class="form-popup" id="computer">
+            <div class="titre">
+                <h2 id="nameCard"></h2>
+            </div>
+            <div class="price">
+                <div class="achat">
+                    <p id="nameprice"> achat:</p>
+                    <p id="prixAchat"></p>
+                </div>
+                <div class="loyer">
+                    <p id="nameprice"> loyer sans amelioration</p>
+                    <p id="loyer"></p>
+                </div>
+                <div class="upgrade1">
+                    <p id="nameprice"> - 1 RAM</p>
+                    <p id="upgrade1"></p>
+                </div>
+                <div class="upgrade2">
+                    <p id="nameprice"> - 2 RAM</p>
+                    <p id="upgrade2"></p>
+                </div>
+                <div class="upgrade3">
+                    <p id="nameprice"> - 3 RAM</p>
+                    <p id="upgrade3"></p>
+                </div>
+                <div class="upgrade4">
+                    <p id="nameprice">- 1 CPU</p>
+                    <p id="upgrade4"></p>
+                </div>
+                <hr>
+                    <div class="upgrade4">
+                        <p id="nameprice"> prix de la RAM:</p>
+                        <p id="priceRAM"></p>
+                    </div>
+                    <div class="upgrade4">
+                        <p id="nameprice"> prix de la CPU:</p>
+                        <p id="priceCPU"></p>
+                    </div>
+            </div>
+            <div class="bouton">
+                <button type="button" class="btn achat" onclick="closeForm()">acheter</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Fermer</button>
+            </div>
+        </div>
     </body>
 </html> 

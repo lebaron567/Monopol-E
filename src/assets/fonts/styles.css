@@ -16,7 +16,7 @@ body{
     border: 2px solid white;
     background-image: url(../img/plateau.png);
     background-size: cover;
-    z-index:3;
+    z-index:0;
 }
 
 #textInfo {
@@ -47,7 +47,63 @@ body{
     border-radius: 10px;
     border: 3px inset #A09A9A;
 }
-    
-/* #case {
-    border: solid black;
-} */
+.form-popup {
+    display: none;
+    position: fixed;
+    height:auto;
+    width: 400px;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, 5%);
+    border: 2px solid #666;
+    background-color: rgb(255, 255, 255);
+    z-index: 9;
+    flex-direction: column;
+}
+
+.bouton{
+    position: relative;
+    display: flex;
+    width: 100px;
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%, 5%);
+    margin-bottom: 40px;
+    margin-top: 20px;
+
+}
+
+.titre{
+    width: 90%;
+    position: relative;
+    background-color: aquamarine;
+    left: 50%; 
+    margin-top: 10px;
+    transform: translate(-50%, 0%); /* décalage de 50% de sa propre taille */
+    border-radius: 10px;
+    border: solid 2px ;
+}
+.price div {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+.price div p{
+    font-size: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+#nameprice{
+    width: 70%;
+}
+
+.price{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+p{
+    margin-bottom: 0px;
+    margin-top: 5px;
+}

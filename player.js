@@ -20,10 +20,14 @@ export class Player{
     numCase =32
     round =false
     numPlayer= 0
+    throw =false
+    constructor(name){
+        this.name = name
+    }
 
 
-
-    throw(){
+    throwDee(){
+        this.throw = true
         const dee1 = Math.floor(Math.random() * 6)+1;
         const dee2 = Math.floor(Math.random() * 6)+1;
         let deplasement = dee1 +dee2
@@ -34,13 +38,12 @@ export class Player{
         }
         this.axe = stockData[this.numCase].axe
         this.pos = stockData[this.numCase].pos
-        console.log(this.numCase)
+
         var div = document.createElement('div');
         div.id = 'textInfo';
         div.innerHTML = `${this.name} : lanser les dée: ${dee1} et ${dee2}. Vous avanser de ${dee1+dee2} casse`;
         div.className = 'lancerDee';
         info.prepend(div);
-        this.round = false
     }
 
     draw(){

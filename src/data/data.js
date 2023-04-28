@@ -33,7 +33,7 @@ export const stockData =[
         "type": "central",
         "axe": 1,
         "pos": 5,
-        "prix":1000,
+        "price":1000,
         "rent":[500,1000,1500,2000]
         
     },{
@@ -103,7 +103,7 @@ export const stockData =[
         "type": "central",
         "axe": 2,
         "pos": 5,
-        "prix":1000,
+        "price":1000,
         "rent":[500,1000,1500,2000]
     },{
         "type": "computer",
@@ -173,7 +173,7 @@ export const stockData =[
         "type": "central",
         "axe": 3,
         "pos": 5,
-        "prix":1000,
+        "price":1000,
         "rent":[500,1000,1500,2000]
     },{
         "type": "computer",
@@ -234,7 +234,7 @@ export const stockData =[
         "axe": 4,
         "pos": 4,
         "name": "MacBook Pro 16",
-        "prix":1950,
+        "price":1950,
         "rent":750,
         "amelioration" :[1520,2780,3400,3920],
         "RAMPrice": 700,
@@ -243,7 +243,7 @@ export const stockData =[
         "type": "central",
         "axe": 4,
         "pos": 5,
-        "prix":1000,
+        "price":1000,
         "rent":[500,1000,1500,2000]
     },{
         "type": "computer",
@@ -251,7 +251,7 @@ export const stockData =[
         "axe": 4,
         "pos": 6,
         "name": "Alienware m15 R6",
-        "prix":2300,
+        "price":2300,
         "rent":800,
         "amelioration" :[1620,2970,3770,4670],
         "RAMPrice": 700,
@@ -266,7 +266,7 @@ export const stockData =[
         "axe": 4,
         "pos": 8,
         "name": "Alienware m16",
-        "prix":2600,
+        "price":2600,
         "rent":900,
         "amelioration" :[1800,3270,4100,5000],
         "RAMPrice": 750,

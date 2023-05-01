@@ -6,8 +6,16 @@
     <title>accueil</title>
 </head>
 <body>
-    <form action="/game.html">
-        <button type="submit">start</button>
+    <form method="GET">
+        <select name="NBPlyers" id="NBPlyers" >
+            <option value="">--Please choose an option--</option>
+            <option value="2">2 joureur</option>
+            <option value="3">3 joureur</option>
+            <option value="4">4 joureur</option>
+        </select>
     </form>
+    <button type="button" class="sumit" onclick="choise()">envoiyer
+</button>
+    <script  src="index.js" type="module"> </script>
 </body>
 </html>

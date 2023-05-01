@@ -41,7 +41,7 @@ export class Player{
 
         var div = document.createElement('div');
         div.id = 'textInfo';
-        div.innerHTML = `${this.name} : lanser les dée: ${dee1} et ${dee2}. Vous avanser de ${dee1+dee2} casse`;
+        div.innerHTML =  '<span style="color:'+this.couleur+'">'+this.name+'</span>'+ ` : lanser les dée: ${dee1} et ${dee2}. Vous avanser de ${dee1+dee2} casse`;
         div.className = 'lancerDee';
         info.prepend(div);
     }
@@ -50,8 +50,9 @@ export class Player{
         const decalage = [{L:20,l:20},{L:55,l:20},{L:20,l:45},{L:55,l:45}]
         const cor =[6,5,4,3,2,1,0]
         const couleur = ["red", "blue", "#FFFF00","#9400D3"]
+        this.couleur = couleur[this.numPlayer]
         c.beginPath();
-        c.fillStyle=couleur[this.numPlayer]
+        c.fillStyle= this.couleur
         if(this.axe == 1){
         if(this.pos==1){
             c.arc(board.width-(board.width*0.15) + decalage[this.numPlayer].L,board.width-(board.width*0.136) + decalage[this.numPlayer].l,10,0, 2 * Math.PI);

@@ -11,7 +11,7 @@ body{
     height: 680px;
     width: 680px;
     position: absolute; /* postulat de départ */
-    top: 100px; left: 50%; /* à 50%/50% du parent référent */
+    top: 20px; left: 50%; /* à 50%/50% du parent référent */
     transform: translate(-50%, 0%); /* décalage de 50% de sa propre taille */
     border: 2px solid white;
     background-image: url(../img/plateau.png);
@@ -36,7 +36,7 @@ body{
     border: solid grey 2px;
     background-color: #FFFFFF;
     position: absolute; /* postulat de départ */
-    top: 440px; left: 50%; /* à 50%/50% du parent référent */
+    top: 363px; left: 50%; /* à 50%/50% du parent référent */
     transform: translate(-50%, 0%); /* décalage de 50% de sa propre taille */
     width: 440px;
     height: 232px;

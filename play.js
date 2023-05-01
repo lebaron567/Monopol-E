@@ -2,7 +2,10 @@
  import { cases } from "./main.js";
  
  export function play(){
+
     for(var i= 0; i < players.length; i++){
+        console.log(players[i].name + ":" + players[i].round, players[i].throw)
+        console.log()
         if(players[i].round){
             if(players[i].throw){
                 if(stockData[players[i].numCase].type == "computer" ){
@@ -19,6 +22,21 @@
                         div.className = 'loyer';
                         info.prepend(div);
                     }
+                }else if(stockData[players[i].numCase].type == "chance" ){
+                    displayInfo(`${players[i].name} : vous etre sur un case chance`)
+                    nextRound()
+                }else if(stockData[players[i].numCase].type == "central" ){
+                    displayInfo(`${players[i].name} : vous etre sur un case central`)
+                    nextRound()
+                }else if(stockData[players[i].numCase].type == "overclocking" ){
+                    displayInfo(`${players[i].name} : vous etre sur un case overclocking`)
+                    nextRound()
+                }else if(stockData[players[i].numCase].type == "tour du monde" ){
+                    displayInfo(`${players[i].name} : vous etre sur un case tour du monde`)
+                    nextRound()
+                }else if(stockData[players[i].numCase].type == "prison" ){
+                    displayInfo(`${players[i].name} : vous etre sur un case prison`)
+                    nextRound()
                 }else{
                     nextRound()
                 }
@@ -26,6 +44,15 @@
         }
     } 
 } 
+
+function displayInfo(text){
+    const info = document.querySelector('.info_box');
+    var div = document.createElement('div');
+    div.id = 'textInfo';
+    div.innerHTML = text;
+    div.className = 'info';
+    info.prepend(div);
+}
 
 function cardComputer(player){
     let computer = document.getElementById("computer")

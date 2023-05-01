@@ -13,10 +13,14 @@ const player1 = new Player("clavier")
 player1.round = true
 players.push(player1)
 const player2 = new Player("ecren")
+const player3 = new Player("cable")
+const player4 = new Player("batrie")
 player2.numPlayer = 1
-players.push(player2) 
-    setInterval(anim,100)
-    setInterval(play,100)
+player3.numPlayer = 2
+player4.numPlayer = 3
+players.push(player2,player3,player4) 
+setInterval(anim,100)
+setInterval(play,100)
 
 
 
@@ -85,6 +89,10 @@ function nextRound(){
     }else{
         players[0].round = true
     }
+}
+
+function choise(){
+    console.log(document.forms[0].NBPlyers.selectedIndex) ; 
 }
 
 

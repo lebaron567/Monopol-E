@@ -75,7 +75,7 @@ export const stockData =[
         "RAMPrice": 130,
         "CPUPrice": 250
     },{
-        "type": "ventre",
+        "type": "prison",
         "axe": 2,
         "pos": 1
     },{

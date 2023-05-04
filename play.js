@@ -15,14 +15,16 @@ export function play(){
                         cardComputer(players[i])
                     }else{
                         const player = players.find(element => found.owner == element.name );
+                        console.log(player.money);    console.log(players[i].money); console.log(found.rent);
                         player.money += found.rent
-                        players[i].money += found.rent
+                        players[i].money -= found.rent
 
                         var div = document.createElement('div');
                         div.id = 'textInfo';
                         div.innerHTML = `${players[i].name} donne ${found.rent} $ a ${player.name}`;
                         div.className = 'loyer';
                         info.prepend(div);
+                        nextRound()
                     }
                 }else if(stockData[players[i].numCase].type == "chance" ){
                     displayInfo(`${players[i].name} : vous etre sur un case chance`)
@@ -39,6 +41,14 @@ export function play(){
                 }else if(stockData[players[i].numCase].type == "prison" ){
                     displayInfo(`${players[i].name} : vous etre sur un case prison`)
                     nextRound()
+                }else if(stockData[players[i].numCase].type == "taxe"){
+                    let taxes = 0
+                    for (let j = 0; j < cases.length; j++){
+                        if(cases[j].owner === players[i]){
+                            taxes+= (cases[j].price)/10
+                        }
+                    }
+
                 }else{
                     nextRound()
                 }
@@ -94,13 +104,12 @@ export const buyComputer = () => {
     console.log(cases);
     for (let i=0 ; i<players.length; i++){
         if(players[i].round === true){
-            // console.log(players[i].money);
+            
+           
             console.log(cases[players[i].numCase]);
             if(players[i].money >= cases[players[i].numCase].price){
                 cases[players[i].numCase].owner=players[i].name
-                console.log(cases[players[i].numCase].price);
                 players[i].money-=cases[players[i].numCase].price
-                console.log(players[i].money);
             }else {
                 //afficher vous n'aver aps assez d'argent 
             }

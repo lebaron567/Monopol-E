@@ -1,21 +1,23 @@
- import { players } from "./main.js";
- import { cases } from "./main.js";
+import { players } from "./main.js";
+import { cases } from "./main.js";
+const info = document.querySelector('.info_box');
  
- export function play(){
+export function play(){
 
     for(var i= 0; i < players.length; i++){
-        console.log(players[i].name + ":" + players[i].round, players[i].throw)
-        console.log()
+        // console.log(players[i].name + ":" + players[i].round, players[i].throw)
+        // console.log()
         if(players[i].round){
             if(players[i].throw){
                 if(stockData[players[i].numCase].type == "computer" ){
-                    const found = cases[0].find(element => element.name == stockData[players[i].numCase].name );
+                   const found = cases.find(element => element.name == stockData[players[i].numCase].name );
                     if (found.owner == "nobody"){
                         cardComputer(players[i])
                     }else{
                         const player = players.find(element => found.owner == element.name );
                         player.money += found.rent
                         players[i].money += found.rent
+
                         var div = document.createElement('div');
                         div.id = 'textInfo';
                         div.innerHTML = `${players[i].name} donne ${found.rent} $ a ${player.name}`;
@@ -71,7 +73,7 @@ function cardComputer(player){
     player.throw = false
 }
 
-function nextRound(){
+const nextRound = () => {
     let num = 0
     for(var i= 0; i < players.length; i++){
         if(players[i].round == true){
@@ -84,5 +86,34 @@ function nextRound(){
         players[num+1].round = true
     }else{
         players[0].round = true
+    }
+}
+
+
+export const buyComputer = () => {
+    console.log(cases);
+    for (let i=0 ; i<players.length; i++){
+        if(players[i].round === true){
+            // console.log(players[i].money);
+            console.log(cases[players[i].numCase]);
+            if(players[i].money >= cases[players[i].numCase].price){
+                cases[players[i].numCase].owner=players[i].name
+                console.log(cases[players[i].numCase].price);
+                players[i].money-=cases[players[i].numCase].price
+                console.log(players[i].money);
+            }else {
+                //afficher vous n'aver aps assez d'argent 
+            }
+           
+            document.getElementById("computer").style.display= "none"
+            players[i].throw=false
+            players[i].round=false
+            if(i+1<players.length){
+                players[i+1].round = true
+            }else{
+                players[0].round = true
+            }
+            return
+        }
     }
 }

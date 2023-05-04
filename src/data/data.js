@@ -91,7 +91,7 @@ export const stockData =[
         "RAMPrice": 180,
         "CPUPrice": 300
     },{
-        "type": "ventilation",
+        "type": "chance",
         "axe": 2,
         "pos": 3
     },{
@@ -200,7 +200,7 @@ export const stockData =[
         "RAMPrice": 580,
         "CPUPrice": 610,
     },{
-        "type": "ventilation",
+        "type": "chance",
         "axe": 3,
         "pos": 7
     },{

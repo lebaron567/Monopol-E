@@ -2,6 +2,8 @@ import { Player } from "./player.js"
 import { stockData } from './src/data/data.js';
 import { initialize } from "./initialization.js";
 import { play } from "./play.js";
+import { buyComputer } from "./play.js";
+window.buyComputer=buyComputer
 var image = document.getElementById("source");
 const board = document.querySelector('#gameBoard');
 const c = board.getContext('2d');
@@ -71,7 +73,7 @@ function openForm() {
     document.getElementById("computer").style.display = "block";
 }
 
-  function closeForm() {
+function closeForm() {
     document.getElementById("computer").style.display = "none";
     nextRound()
 }

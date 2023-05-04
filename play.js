@@ -1,26 +1,30 @@
 import { players } from "./main.js";
 import { cases } from "./main.js";
+const info = document.querySelector('.info_box');
  
 export function play(){
 
     for(var i= 0; i < players.length; i++){
-        console.log(players[i].name + ":" + players[i].round, players[i].throw)
-        console.log()
+        // console.log(players[i].name + ":" + players[i].round, players[i].throw)
+        // console.log()
         if(players[i].round){
             if(players[i].throw){
                 if(stockData[players[i].numCase].type == "computer" ){
-                    const found = cases[0].find(element => element.name == stockData[players[i].numCase].name );
+                   const found = cases.find(element => element.name == stockData[players[i].numCase].name );
                     if (found.owner == "nobody"){
                         cardComputer(players[i])
                     }else{
                         const player = players.find(element => found.owner == element.name );
+                        console.log(player.money);    console.log(players[i].money); console.log(found.rent);
                         player.money += found.rent
-                        players[i].money += found.rent
+                        players[i].money -= found.rent
+
                         var div = document.createElement('div');
                         div.id = 'textInfo';
                         div.innerHTML = `${players[i].name} donne ${found.rent} $ a ${player.name}`;
                         div.className = 'loyer';
                         info.prepend(div);
+                        nextRound()
                     }
                 }else if(stockData[players[i].numCase].type == "chance" ){
                     displayInfo(`${players[i].name} : vous etre sur un case chance`)
@@ -37,6 +41,14 @@ export function play(){
                 }else if(stockData[players[i].numCase].type == "prison" ){
                     displayInfo(`${players[i].name} : vous etre sur un case prison`)
                     nextRound()
+                }else if(stockData[players[i].numCase].type == "taxe"){
+                    let taxes = 0
+                    for (let j = 0; j < cases.length; j++){
+                        if(cases[j].owner === players[i]){
+                            taxes+= (cases[j].price)/10
+                        }
+                    }
+
                 }else{
                     nextRound()
                 }
@@ -71,7 +83,7 @@ function cardComputer(player){
     player.throw = false
 }
 
-function nextRound(){
+const nextRound = () => {
     let num = 0
     for(var i= 0; i < players.length; i++){
         if(players[i].round == true){
@@ -84,5 +96,33 @@ function nextRound(){
         players[num+1].round = true
     }else{
         players[0].round = true
+    }
+}
+
+
+export const buyComputer = () => {
+    console.log(cases);
+    for (let i=0 ; i<players.length; i++){
+        if(players[i].round === true){
+            
+           
+            console.log(cases[players[i].numCase]);
+            if(players[i].money >= cases[players[i].numCase].price){
+                cases[players[i].numCase].owner=players[i].name
+                players[i].money-=cases[players[i].numCase].price
+            }else {
+                //afficher vous n'aver aps assez d'argent 
+            }
+           
+            document.getElementById("computer").style.display= "none"
+            players[i].throw=false
+            players[i].round=false
+            if(i+1<players.length){
+                players[i+1].round = true
+            }else{
+                players[0].round = true
+            }
+            return
+        }
     }
 }

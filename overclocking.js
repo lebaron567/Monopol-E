@@ -1,4 +1,5 @@
 export class Overclocking{
+    owner = "game"
     lastBoosted = ""
     constructor(axe, pos, coste){
         this.axe = axe

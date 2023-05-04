@@ -2,10 +2,10 @@ export class Computer{
     indexUpgrade = null
     owner = "nobody"
     isBoosted = false
-    constructor(groupe, axe, pose, name, price, rent, upgrade, RAMPrice, CPUPrice){
+    constructor(groupe, axe, pos, name, price, rent, upgrade, RAMPrice, CPUPrice){
         this.groupe = groupe
         this.axe = axe
-        this.pose = pose
+        this.pos = pos
         this.name = name
         this.price = price
         this.rent = rent

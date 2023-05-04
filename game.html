@@ -52,5 +52,16 @@
                 <button type="button" class="btn cancel" onclick="closeForm()">Fermer</button>
             </div>
         </div>
+        <div class="menu" id="menu">
+            <div>
+                <label for="fname">First name:</label><br>
+                <input type="text" placeholder="Ecrivez votre nom" id="nom" value="Gémy" />
+                <button type="button"  onclick="addPlayer()">ajouter joureur </button>
+            </div>
+            <form action="/game.html">
+                <button type="button" onclick="start()" >start</button>
+            </form>
+            <p id="loyer"></p>
+        </div>
     </body>
 </html> 

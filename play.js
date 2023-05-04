@@ -1,7 +1,7 @@
- import { players } from "./main.js";
- import { cases } from "./main.js";
+import { players } from "./main.js";
+import { cases } from "./main.js";
  
- export function play(){
+export function play(){
 
     for(var i= 0; i < players.length; i++){
         console.log(players[i].name + ":" + players[i].round, players[i].throw)

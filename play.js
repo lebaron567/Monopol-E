@@ -9,6 +9,7 @@ export function play(){
         // console.log()
         if(players[i].round){
             if(players[i].throw){
+
                 if(stockData[players[i].numCase].type == "computer" ){
                    const found = cases.find(element => element.name == stockData[players[i].numCase].name );
                     if (found.owner == "nobody"){
@@ -16,9 +17,19 @@ export function play(){
                     }else{
                         const player = players.find(element => found.owner == element.name );
                         console.log(player.money);    console.log(players[i].money); console.log(found.rent);
-                        player.money += found.rent
-                        players[i].money -= found.rent
-
+                        // faire le cas ou la case est down a cause d'une carte chance 
+                        if(found.indexUpgrade!==null){
+                            if(found.rent!=found.upgrade[indexUpgrade]){
+                                found.rent=found.upgrade[indexUpgrade]
+                            }
+                        }
+                        if(found.isBoosted===true){
+                            player.money += found.rent*1.5
+                            players[i].money -= found.rent*1.5
+                        }else{
+                            player.money += found.rent
+                            players[i].money -= found.rent
+                        }
                         var div = document.createElement('div');
                         div.id = 'textInfo';
                         div.innerHTML = `${players[i].name} donne ${found.rent} $ a ${player.name}`;
@@ -53,7 +64,10 @@ export function play(){
                 }else if(stockData[players[i].numCase].type == "overclocking" ){
                     displayInfo(`${players[i].name} : vous etre sur un case overclocking`)
                     displayOverclocking(players[i])
-                    nextRound()
+                    while(numero<0){}
+                    cases[16].boost(cases[numero], cases)
+                    numero=-1
+                    
                 }else if(stockData[players[i].numCase].type == "tour du monde" ){
                     displayInfo(`${players[i].name} : vous etre sur un case tour du monde`)
                     nextRound()
@@ -69,10 +83,9 @@ export function play(){
                     }
                     players[i].money-=taxes
                     //afficher un message qui dis que le joueur a payer des taxes
-                }else{
-                    nextRound()
                 }
             }
+            
         }
     } 
 } 
@@ -109,7 +122,7 @@ const nextRound = () => {
         if(players[i].round == true){
             num = i 
             players[i].throw = false
-            players[i].round = false
+          
         }
     }
     if(num+1<players.length){
@@ -131,6 +144,12 @@ export const displayOverclocking = (player) => {
     over.style.display = "flex";
 }
 
+let numero = -1
+window.OverValeur = OverValeur
+function OverValeur(){
+    numero = document.getElementById("ordiPlayer").value;
+    document.getElementById("Overclocking").style.display = "none"
+}
 
 export const buyComputer = () => {
     console.log(cases);
@@ -158,3 +177,4 @@ export const buyComputer = () => {
         }
     }
 }
+

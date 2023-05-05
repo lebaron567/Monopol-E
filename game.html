@@ -4,10 +4,12 @@
         <title>Monopol-E</title>
     </head>
     <body>
-        <canvas id="gameBoard" ></div></canvas>
-        <div class="info_box " id="idInfoBox"></div>
-        <script  src="main.js" type="module"> </script>
-        <button class="bou"  onclick="lance()">lancer</button>
+        <div class="plateau">
+            <canvas id="gameBoard" ></canvas>
+            <button class="bou"  onclick="lance()">lancer</button>
+            <div class="info_box " id="idInfoBox"></div>
+            <script  src="main.js" type="module"> </script>
+        </div>
         <div class="form-popup" id="computer">
             <div class="titre" id="titre">
                 <h2 id="nameCard"></h2>
@@ -65,8 +67,8 @@
         </div>
         <div  id="Overclocking" class="Overclocking">
             <label for="fname">le numero de la casse </label><br>
-            <input type="text" placeholder="Ecrivez votre numero" id="numero" />
-            <button type="button"  onclick="addPlayer()">valider</button>
+            <select name="ordiPlayer" id="ordiPlayer" ></select>
+            <button type="button"  onclick="OverValeur()">valider</button>
         </div>
     </body>
 </html> 

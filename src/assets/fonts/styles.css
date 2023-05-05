@@ -10,13 +10,12 @@ body{
 #gameBoard {
     height: 680px;
     width: 680px;
-    position: absolute; /* postulat de départ */
-    top: 20px; left: 50%; /* à 50%/50% du parent référent */
-    transform: translate(-50%, 0%); /* décalage de 50% de sa propre taille */
     border: 2px solid white;
     background-image: url(../img/plateau.png);
     background-size: cover;
     z-index:0;
+    position: absolute;
+    transform: translate(-50%, 0%);
 }
 
 #textInfo {
@@ -24,20 +23,19 @@ body{
 }
 
 .bou{
-    position: relative;
-    z-index:5;
-    position: absolute; /* postulat de départ */
-    top: 30%; left: 40%; /* à 50%/50% du parent référent */
-    transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+    z-index: 5;
+    position: absolute;
+    left: 121px;
+    margin-top: 295px;
 }
 
 .info_box {
-    z-index:4;
+    margin-top: 337px;
+    margin-left: 108px;
+    z-index: 4;
     border: solid grey 2px;
     background-color: #FFFFFF;
-    position: absolute; /* postulat de départ */
-    top: 363px; left: 50%; /* à 50%/50% du parent référent */
-    transform: translate(-50%, 0%); /* décalage de 50% de sa propre taille */
+    position: relative;
     width: 440px;
     height: 232px;
     overflow: auto;
@@ -117,9 +115,19 @@ p{
     border: 2px solid #666;
     position: absolute;
     background-color: aliceblue;
-    padding: 30px;
+    padding: 35px;
     left: 50%;
-    top: 10%;
+    top: 20%;
     transform: translate(-50%, 5%);
     z-index: 8;
+    border-radius: 10px;
+}
+
+.plateau {
+
+    height: 680px;
+    width: 680px;
+    position: absolute; /* postulat de départ */
+    top: 70px; left: 50%; /* à 50%/50% du parent référent */
+    transform: translate(-50%, 0%);
 }

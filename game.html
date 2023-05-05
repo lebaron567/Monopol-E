@@ -6,9 +6,9 @@
     <body>
         <div class="plateau">
             <canvas id="gameBoard" ></canvas>
-            <button class="bou"  onclick="lance()">lancer</button>
+            <button class="bou" id="bou"  onclick="lance()">lancer</button>
             <div class="info_box " id="idInfoBox"></div>
-            <script  src="main.js" type="module"> </script>
+            <script  src="main.js" type="module"></script>
         </div>
         <div class="form-popup" id="computer">
             <div class="titre" id="titre">
@@ -55,15 +55,25 @@
             </div>
         </div>
         <div class="menu" id="menu">
-            <div>
+            <div class="addPlayer">
                 <label for="fname">First name:</label><br>
-                <input type="text" placeholder="Ecrivez votre nom" id="nom" value="Gémy" />
+                <input type="text" placeholder="Ecrivez votre nom" id="nom"  />
+                <select name="colordPlayer" id="colordPlayer" >
+                    <option value="#EE82EE">rose </option>
+                    <option value="red">rouge</option>
+                    <option value="blue">bleu</option>
+                    <option value="#32CD32">vert</option>
+                    <option value="#FF00FF">violet </option>
+                    <option value="#FFD700">jaune</option>
+                    <option value="#FF8C00">orenge</option>
+                </select>
                 <button type="button"  onclick="addPlayer()">ajouter joureur </button>
+                <hr>
+                <p>surprimer un joureur </p>
+                <select name="suppPlayer" id="suppPlayer" ></select>
+                <button type="button"  onclick="suppPlayer()">supprimer joureur</button>
             </div>
-            <form action="/game.html">
-                <button type="button" onclick="start()" >start</button>
-            </form>
-            <p id="loyer"></p>
+                <button type="button" class="start" onclick="start()" >start</button>
         </div>
         <div  id="Overclocking" class="Overclocking">
             <label for="fname">le numero de la casse </label><br>

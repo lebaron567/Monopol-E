@@ -21,8 +21,10 @@ export class Player{
     round = false
     numPlayer= 0
     throw =false
-    constructor(name){
+    couleur = "red"
+    constructor(name,couleur){
         this.name = name
+        this.couleur =couleur
     }
 
 
@@ -50,8 +52,8 @@ export class Player{
     draw(){
         const decalage = [{L:20,l:20},{L:55,l:20},{L:20,l:45},{L:55,l:45}]
         const cor =[6,5,4,3,2,1,0]
-        const couleur = ["red", "blue", "#FFFF00","#9400D3"]
-        this.couleur = couleur[this.numPlayer]
+        // const couleur = ["red", "blue", "#FFFF00","#9400D3"]
+        // this.couleur = couleur[this.numPlayer]
         c.beginPath();
         c.fillStyle= this.couleur
         if(this.axe == 1){

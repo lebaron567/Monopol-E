@@ -10,7 +10,7 @@ const c = board.getContext('2d');
 board.width = board.clientWidth;
 board.height = board.clientHeight;
 
-export const players = []
+export let players = []
 // const player1 = new Player("clavier")
 // player1.round = true
 // players.push(player1)
@@ -25,27 +25,45 @@ export const players = []
 // setInterval(play,100)
 
 function addPlayer(){
-    var nom = document.getElementById("nom").value;
-    if (players.length ==0){
-        const player = new Player(nom)
-        player.numPlayer = 0
-        player.round = true
-        document.getElementById("loyer").innerHTML +=player.name
+    if (players.length <4){
+        var nom = document.getElementById("nom").value;
+        var color = document.getElementById("colordPlayer").value;
+        const player = new Player(nom,color)
+        player.numPlayer = players.length
+        if (players.length == 0){
+            player.round = true
+        }
+        let suppPlayer = document.createElement("option");
+        suppPlayer.value = player.numPlayer
+        suppPlayer.id =player.name
+        suppPlayer.prepend(player.name) 
+        document.getElementById("suppPlayer").append(suppPlayer)
+        // document.getElementById("loyer").innerHTML += ", " + player.name
         players.push(player)
-    }else if (players.length <4){
-        const player = new Player(nom)
-        players.push(player)
-        player.numPlayer = players.length-1
-        document.getElementById("loyer").innerHTML += ", " + player.name
+        console.log(players);
     }
 }
+function suppPlayer(){
+    var id = document.getElementById("suppPlayer").value;
+    document.getElementById(players[id].name).remove()
+    players.splice(id, 1);
+    for(let i=0; i<players.length; i++){
+        players[i].numPlayer = i
+    }
+
+}
+
+window.suppPlayer = suppPlayer
 window.addPlayer = addPlayer;
 
 function start(){
-    setInterval(anim,100)
-    setInterval(play,100)
-    document.getElementById("menu").style.display = "none";
-    console.log(players);
+    if(players.length>=2){
+        setInterval(anim,100)
+        setInterval(play,100)
+        document.getElementById("menu").style.display = "none";
+        console.log(players);
+        document.getElementById("bou").style.display = "flex";
+    }
 }
 window.start = start;
 
@@ -65,6 +83,7 @@ function perso(){
         }
     }
 }
+
 
 function  lance(){
     let num =0

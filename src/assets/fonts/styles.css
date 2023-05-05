@@ -27,13 +27,13 @@ body{
     position: absolute;
     left: 121px;
     margin-top: 295px;
+    display: none;
 }
 
 .info_box {
     margin-top: 337px;
     margin-left: 108px;
     z-index: 4;
-    border: solid grey 2px;
     background-color: #FFFFFF;
     position: relative;
     width: 440px;
@@ -106,9 +106,14 @@ p{
     margin-top: 5px;
 }
 .menu{
-    position: relative;
+    position: absolute;
     background-color: aliceblue;
     z-index: 8;
+    top: 70px; left: 50%; /* à 50%/50% du parent référent */
+    transform: translate(-50%, 0%);
+    padding: 20px;
+    border-radius: 10px;
+    border: 3px inset #A09A9A;
 }
 .Overclocking{
     display: none;
@@ -124,10 +129,18 @@ p{
 }
 
 .plateau {
-
     height: 680px;
     width: 680px;
     position: absolute; /* postulat de départ */
     top: 70px; left: 50%; /* à 50%/50% du parent référent */
     transform: translate(-50%, 0%);
 }
+
+#suppPlayer{
+    width: 100px;
+}
+
+.addPlayer{
+
+}
+

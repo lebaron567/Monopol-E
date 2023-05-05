@@ -90,11 +90,11 @@ export class Player{
     addOrLessMoney(num){
         this.money=this.money+num
     }
-    displayProperties(computer){
+    displayProperties(cases){
         let result =[]
-        for (let i=0; i<computer.length; i++){
-            if(computer[i].owner===this.name){
-                result.push(computer[i].name)
+        for (let i=0; i<cases.length; i++){
+            if(cases[i].owner===this.name){
+                result.push(cases[i].name)
             }
         }
         return result

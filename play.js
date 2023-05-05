@@ -30,6 +30,24 @@ export function play(){
                     displayInfo(`${players[i].name} : vous etre sur un case chance`)
                     nextRound()
                 }else if(stockData[players[i].numCase].type == "central" ){
+                    const found = cases.find(element => element.name == stockData[players[i].numCase].name );
+                    if (found.owner == "nobody"){
+                        cardComputer(players[i])
+                    }else {
+                        let indexCentral=0
+                        const casesOfCentral = [4, 12, 20 ,28]
+                        const player = players.find(element => found.owner == element.name );
+                        for(let k=0; k<casesOfCentral.length;k++){
+                            if(cases[casesOfCentral[k]].type==="central" && cases[casesOfCentral[k]].owner===player.name){
+                                indexCentral++
+                            }
+                        }
+                        if(players[i].name != player.name){
+                            players[i].money-=cases[players[i].numCase].upgrade[indexCentral]
+                            player.money+=cases[players[i].numCase].upgrade[indexCentral]
+                            //afficher un message qui dis que le joueur a payer le proprietaire
+                        }
+                    }
                     displayInfo(`${players[i].name} : vous etre sur un case central`)
                     nextRound()
                 }else if(stockData[players[i].numCase].type == "overclocking" ){
@@ -48,7 +66,8 @@ export function play(){
                             taxes+= (cases[j].price)/10
                         }
                     }
-
+                    players[i].money-=taxes
+                    //afficher un message qui dis que le joueur a payer des taxes
                 }else{
                     nextRound()
                 }

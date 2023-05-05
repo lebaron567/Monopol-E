@@ -33,6 +33,7 @@ export const stockData =[
         "pos": 4
     },{
         "type": "central",
+        "name" : "south",
         "axe": 1,
         "pos": 5,
         "price":1000,
@@ -108,6 +109,7 @@ export const stockData =[
         "CPUPrice": 330
     },{
         "type": "central",
+        "name": "west",
         "axe": 2,
         "pos": 5,
         "price":1000,
@@ -183,6 +185,7 @@ export const stockData =[
         "CPUPrice": 470,
     },{
         "type": "central",
+        "name": "north",
         "axe": 3,
         "pos": 5,
         "price":1000,
@@ -258,6 +261,7 @@ export const stockData =[
         "CPUPrice": 730,
     },{
         "type": "central",
+        "name": "est",
         "axe": 4,
         "pos": 5,
         "price":1000,

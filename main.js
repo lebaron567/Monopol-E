@@ -114,10 +114,11 @@ function nextRound(){
     }
 }
 
-function choise(){
-    console.log(document.forms[0].NBPlyers.selectedIndex) ; 
+function OverValeur(){
+    var numero = document.getElementById("ordiPlayer").value;
+    document.getElementById("Overclocking").style.display = "none"
+    console.log(numero)
 }
-
-
+window.OverValeur = OverValeur
 window.openForm = openForm
 window.closeForm = closeForm

@@ -3,8 +3,8 @@ import { cases } from "./main.js";
 const info = document.querySelector('.info_box');
  
 export function play(){
-
     for(var i= 0; i < players.length; i++){
+        console.log(players[i].displayProperties(cases));
         // console.log(players[i].name + ":" + players[i].round, players[i].throw)
         // console.log()
         if(players[i].round){
@@ -52,6 +52,7 @@ export function play(){
                     nextRound()
                 }else if(stockData[players[i].numCase].type == "overclocking" ){
                     displayInfo(`${players[i].name} : vous etre sur un case overclocking`)
+                    displayOverclocking(players[i])
                     nextRound()
                 }else if(stockData[players[i].numCase].type == "tour du monde" ){
                     displayInfo(`${players[i].name} : vous etre sur un case tour du monde`)
@@ -76,7 +77,7 @@ export function play(){
     } 
 } 
 
-function displayInfo(text){
+export function displayInfo(text){
     const info = document.querySelector('.info_box');
     var div = document.createElement('div');
     div.id = 'textInfo';
@@ -116,6 +117,18 @@ const nextRound = () => {
     }else{
         players[0].round = true
     }
+}
+
+export const displayOverclocking = (player) => {
+    let over = document.getElementById("Overclocking")
+    const properties = player.displayProperties(cases)
+    for(let i=0; i<properties.length;i++){
+        let opition = document.createElement("option");
+        opition.value = i
+        opition.prepend(properties[i]) 
+        document.getElementById("ordiPlayer").prepend(opition)
+    }
+    over.style.display = "flex";
 }
 
 

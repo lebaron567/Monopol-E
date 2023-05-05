@@ -11,23 +11,43 @@ board.width = board.clientWidth;
 board.height = board.clientHeight;
 
 export const players = []
-const player1 = new Player("clavier")
-player1.round = true
-players.push(player1)
-const player2 = new Player("ecren")
-const player3 = new Player("cable")
-const player4 = new Player("batrie")
-player2.numPlayer = 1
-player3.numPlayer = 2
-player4.numPlayer = 3
-players.push(player2,player3,player4) 
-setInterval(anim,100)
-setInterval(play,100)
+// const player1 = new Player("clavier")
+// player1.round = true
+// players.push(player1)
+// const player2 = new Player("ecren")
+// const player3 = new Player("cable")
+// const player4 = new Player("batrie")
+// player2.numPlayer = 1
+// player3.numPlayer = 2
+// player4.numPlayer = 3
+// players.push(player2,player3,player4) 
+// setInterval(anim,100)
+// setInterval(play,100)
 
+function addPlayer(){
+    var nom = document.getElementById("nom").value;
+    if (players.length ==0){
+        const player = new Player(nom)
+        player.numPlayer = 0
+        player.round = true
+        document.getElementById("loyer").innerHTML +=player.name
+        players.push(player)
+    }else if (players.length <4){
+        const player = new Player(nom)
+        players.push(player)
+        player.numPlayer = players.length-1
+        document.getElementById("loyer").innerHTML += ", " + player.name
+    }
+}
+window.addPlayer = addPlayer;
 
-
-
-
+function start(){
+    setInterval(anim,100)
+    setInterval(play,100)
+    document.getElementById("menu").style.display = "none";
+    console.log(players);
+}
+window.start = start;
 
 export function anim(){
     c.clearRect(0,0,board.width,board.height);
@@ -37,6 +57,7 @@ export function anim(){
     }
 }
 setInterval(anim,100)
+console.log(players)
 function perso(){
     for(var i= 0; i < players.length; i++){
         if(players[i].round == true){

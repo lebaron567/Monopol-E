@@ -18,7 +18,7 @@ export class Player{
     axe = 1
     pos = 1
     numCase =32
-    round =false
+    round = false
     numPlayer= 0
     throw =false
     constructor(name){
@@ -34,6 +34,7 @@ export class Player{
         if (deplasement + this.numCase >= 32){
             this.numCase = this.numCase + deplasement-32
         }else{
+            this.money += 500
             this.numCase = this.numCase + deplasement
         }
         this.axe = stockData[this.numCase].axe

@@ -122,7 +122,7 @@ const nextRound = () => {
         if(players[i].round == true){
             num = i 
             players[i].throw = false
-          
+            players[i].round=false
         }
     }
     if(num+1<players.length){

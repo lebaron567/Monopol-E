@@ -41,6 +41,26 @@ function addPlayer(){
         // document.getElementById("loyer").innerHTML += ", " + player.name
         players.push(player)
         console.log(players);
+        let div = document.createElement("div");
+        let name = document.createElement("p");
+        let money = document.createElement("p");
+        let top = document.createElement("div");
+        let properties = document.createElement("div");
+        div.id = player.name+"Info"
+        div.className ="infoPlayer"
+        name.id= "name"
+        money.id = player.name+"Money"
+        name.innerHTML= player.name
+        top.style.background = player.couleur
+        money.innerHTML = player.money + " $"
+        top.id ="topInfo"
+        properties.id =player.name +"properties"
+
+        top.append(name)
+        top.append(money)
+        div.append(top)
+        div.append(properties)
+        document.getElementById("infoPlayers").append(div)
     }
 }
 function suppPlayer(){
@@ -59,7 +79,7 @@ window.addPlayer = addPlayer;
 function start(){
     if(players.length>=2){
         setInterval(anim,100)
-        setInterval(play,100)
+        setInterval(play,1000)
         document.getElementById("menu").style.display = "none";
         console.log(players);
         document.getElementById("bou").style.display = "flex";
@@ -71,7 +91,18 @@ export function anim(){
     c.clearRect(0,0,board.width,board.height);
     for(var i= 0; i < players.length; i++){
         players[i].update()
-
+        document.getElementById(players[i].name+"Money").innerHTML = players[i].money + " $"
+        document.getElementById(players[i].name +"properties").remove()
+        let newProper = document.createElement("div");
+        newProper.id = players[i].name +"properties"
+        let Properties = players[i].displayProperties(cases)
+        for(var y= 0; y < Properties.length; y++){
+            let name = document.createElement("p");
+            name.innerHTML= Properties[y]
+            newProper.append(name)
+        }
+        document.getElementById(players[i].name+"Info").append(newProper)
+        
     }
 }
 setInterval(anim,100)
@@ -89,7 +120,8 @@ function  lance(){
     let num =0
     console.log()
     for(var i= 0; i < players.length; i++){
-        if(players[i].round == true){
+        //console.log(players[i].name,players[i].round, players[i].throw);
+        if(players[i].round == true && players[i].throw ==false){
             players[i].throw = true
             players[i].throwDee()
             num = i

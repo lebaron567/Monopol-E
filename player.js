@@ -13,7 +13,7 @@ board.height = board.clientHeight;
 export class Player{
     name=""
     NBcase = 0
-    money = 500
+    money = 1000
     estate = []
     axe = 1
     pos = 1
@@ -33,10 +33,10 @@ export class Player{
         const dee1 = Math.floor(Math.random() * 6)+1;
         const dee2 = Math.floor(Math.random() * 6)+1;
         let deplasement = dee1 +dee2
-        if (deplasement + this.numCase >= 32){
+        if (deplasement + this.numCase > 32){
             this.numCase = this.numCase + deplasement-32
-        }else{
             this.money += 500
+        }else{
             this.numCase = this.numCase + deplasement
         }
         this.axe = stockData[this.numCase].axe

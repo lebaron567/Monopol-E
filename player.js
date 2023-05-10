@@ -1,4 +1,5 @@
 import { stockData } from './src/data/data.js';
+import { displayInfo } from './play.js';
 window.stockData = stockData
 const board = document.querySelector('#gameBoard');
 const info = document.querySelector('.info_box');
@@ -22,12 +23,14 @@ export class Player{
     numPlayer= 0
     throw =false
     couleur = "red"
+    prison = false
     constructor(name,couleur){
         this.name = name
         this.couleur =couleur
     }
     doubleCount=0
     throwCount=0
+    lost = false
     
 
     throwDee(){
@@ -37,47 +40,47 @@ export class Player{
         var div = document.createElement('div');
         div.id = 'textInfo';
         div.className = 'lancerDee';
+        displayInfo (` : lanser les dée: ${dee1} et ${dee2}. Vous avanser de ${dee1+dee2} casse`,this);
         info.prepend(div);
-        div.innerHTML =  '<span style="color:'+this.couleur+'">'+this.name+'</span>'+ ` : lanser les dée: ${dee1} et ${dee2}. Vous avanser de ${dee1+dee2} casse`;
+        if(this.prison ){
+            if (dee1===dee2 || this.throwCount >=3){
+                displayInfo( ': vous sorter de prison',this)
+                info.prepend(div);
+                this.prison=false
+            }else{ 
+                displayInfo(' : vous rester en prison, plus que '+ 3 -this.throwCount+ " essais",this)
+                info.prepend(div);
+                this.throwCount ++
+            }
+            return
+        }
+        this.throwCount=0
         if (dee1===dee2){
-            div.innerHTML = '<span style="color:'+this.couleur+'">'+this.name+'</span>'+ ' : as fais un double et peu donc lancer les dees a nouveau'
+            displayInfo(' : as fais un double et peu donc lancer les dees a nouveau',this)
             info.prepend(div);
             this.doubleCount+=1
         }
         let deplasement = dee1 +dee2
         if (deplasement + this.numCase >= 32){
             this.numCase = this.numCase + deplasement-32
-        }else{
             this.money += 500
+        }else{
             this.numCase = this.numCase + deplasement
         }
         this.axe = stockData[this.numCase].axe
         this.pos = stockData[this.numCase].pos
-
         if(this.doubleCount===3){
             div.innerHTML = '<span style="color:'+this.couleur+'">'+this.name+'</span>'+ '  as fait 3 double, et ses fait arreter par la police pour fraude fiscal, il se retouve en case prison.';
             info.prepend(div);
             this.axe=2
             this.pos=1
             this.doubleCount=0
+            this.prison = true
             return
         }
         if(this.doubleCount>0&&dee1!=dee2){
             this.doubleCount=0
         }
-        // if(this.axe===2&&this.pos===1&&this.doubleCount===0&&this.throwCount<3){
-            
-        //     return
-        // }
-        // let deplasement = dee1 +dee2
-        // if (deplasement + this.numCase >= 32){
-        //     this.numCase = this.numCase + deplasement-32
-        //     this.money += 500
-        // }else{
-        //     this.numCase = this.numCase + deplasement
-        // }
-        // this.axe = stockData[this.numCase].axe
-        // this.pos = stockData[this.numCase].pos
     }
 
     draw(){

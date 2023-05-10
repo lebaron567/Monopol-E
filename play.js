@@ -4,9 +4,19 @@ const info = document.querySelector('.info_box');
  
 export function play(){
     for(var i= 0; i < players.length; i++){
-        if(players[i].round){
+        console.log(players[i].round);
+        if( players[i].money <0){
+            displayInfo(": vous avez plus d'agent vous avez perdu", players[i])
+            const properties= players[i].displayProperties()
+            for(let y=0; y<properties.length;y++){
+                const found = cases.find(element => element.owner == players[i].name );
+                found.owner ="nobody"
+                found.indexUpgrade = null
+            }
+            players[i].lost= true
+        }
+        if(players[i].round &&  !players[i].lost){
             if(players[i].throw){
-
                 if(stockData[players[i].numCase].type == "computer" ){
                    const found = cases.find(element => element.name == stockData[players[i].numCase].name );
                     if (found.owner == "nobody"){
@@ -15,7 +25,6 @@ export function play(){
                         displayUpgrade()
                     }else{
                         const player = players.find(element => found.owner == element.name );
-                        console.log(player.money);    console.log(players[i].money); console.log(found.rent);
                         // faire le cas ou la case est down a cause d'une carte chance 
                         if(found.indexUpgrade!==null){
                             if(found.rent!=found.upgrade[indexUpgrade]){
@@ -116,12 +125,11 @@ export function play(){
                     displayInfo(` : vous etre sur un case overclocking`,players[i])
                     if (players[i].displayProperties(cases).length !=0) {
                         displayOverclocking(players[i])
-                        cases[16].boost(cases[numero], cases)
-                        numero=-1
+                        nextRound()
                     }
-                    
                 }else if(stockData[players[i].numCase].type == "tour du monde" ){
                     displayInfo(` : vous etre sur un case tour du monde`,players[i])
+                    displayTour()
                     let x2 = 0
                     if(x2>25){
                         players[i].pos=x2-24
@@ -130,7 +138,6 @@ export function play(){
                         players[i].axe=Math.floor(x/8)
                         players[i].pose=x%8
                     }
-                    nextRound()
                 }else if(stockData[players[i].numCase].type == "prison" ){
                     displayInfo(` : vous etre sur un case prison`,players[i] )
                     nextRound()
@@ -147,8 +154,11 @@ export function play(){
                 }
             }
             
+        }if(players[i].lost){
+            nextRound()
         }
     } 
+
 } 
 
 export function displayInfo(text,player){
@@ -180,12 +190,10 @@ export const nextRound = () => {
     let num = 0
     for(var i= 0; i < players.length; i++){
         if(players[i].round == true){
-            console.log(players[i].doubleCount);
             if(players[i].doubleCount ==0){
                 num = i 
                 players[i].throw = false
                 players[i].round=false
-                console.log("fffff");
             }else{
                 num = -1
                 players[i].throw = false
@@ -207,6 +215,7 @@ export const nextRound = () => {
 export const displayOverclocking = (player) => {
     let over = document.getElementById("Overclocking")
     const properties = player.displayProperties(cases)
+    document.getElementById("ordiPlayer").replaceChildren();
     for(let i=0; i<properties.length;i++){
         let opition = document.createElement("option");
         opition.value = i
@@ -222,7 +231,6 @@ export const displayUpgrade = () => {
     let ugrade = document.getElementById("addUgrade")
     const properties = perso().displayProperties(cases)
     let nbUgrade = 0
-    console.log(properties);
     for(let i=0; i<properties.length;i++){
             const found = cases.find(element => element.name == properties[i] );
             // if (found.indexUpgrade <3 ||found.indexUpgrade ==null){
@@ -234,7 +242,6 @@ export const displayUpgrade = () => {
                 nbUgrade = found.indexUpgrade +1
             }
             opition.prepend(`${properties[i]}: ${nbUgrade} upgrade`) 
-            console.log(found);
             document.getElementById("ordiPlayerUP").prepend(opition)
         // }
     }
@@ -260,14 +267,42 @@ window.displayUpgrade =displayUpgrade
 function closeUpgrade(){
     let ugrade = document.getElementById("addUgrade")
     ugrade.style.display = "none";
+    nextRound()
 }
 window.closeUpgrade=closeUpgrade
 window.OverValeur = OverValeur
-let numero = -1
+window.TourDuMonde =TourDuMonde
 function OverValeur(){
     numero = document.getElementById("ordiPlayer").value;
     document.getElementById("Overclocking").style.display = "none"
+    cases[16].boost(cases[numero], cases)
+    numero=-1
     nextRound()
+}
+function displayTour(){
+    let tour = document.getElementById("tourDuMonde")
+    document.getElementById("tour").replaceChildren();
+    for(let i=0; i<31;i++){
+        let opition = document.createElement("option");
+        opition.value = i
+        opition.prepend(`case n° ${i}`) 
+        document.getElementById("tour").prepend(opition)
+    }
+    tour.style.display = "flex";
+    update()
+}
+function TourDuMonde(){
+    let x2 = document.getElementById("tour").value
+    player =perso()
+    if(x2>25){
+        player.pos=x2-24
+    }else{
+        player.money+=500
+        player.axe=Math.floor(x/8)
+        player.pose=x%8
+    }
+    document.getElementById("tourDuMonde").style.display ="none"
+    perso.throw = false
 }
 
 export const buyComputer = () => {
@@ -287,10 +322,12 @@ export const buyComputer = () => {
     nextRound()
 }
 
-function update(){
+export function update(){
     for(var i= 0; i < players.length; i++){
         document.getElementById(players[i].name+"Money").innerHTML = players[i].money + " $"
         document.getElementById(players[i].name +"properties").remove()
+        document.getElementById(players[i].name+"NBcase").innerHTML = "case n°"+players[i].numCase
+        let name = document.createElement("p");
         let newProper = document.createElement("div");
         newProper.id = players[i].name +"properties"
         let properties = players[i].displayProperties(cases)
@@ -298,15 +335,17 @@ function update(){
             let div = document.createElement("div");
             let name = document.createElement("p");
             let prixRAM = document.createElement("p");
+            let nbcase = document.createElement("p");
             let prixCPU = document.createElement("p");
             const found = cases.find(element => element.name == properties[y] );
-            name.innerHTML= properties[y]
+            name.innerHTML= properties[y] 
+            nbcase.innerHTML ="case n°"+ cases.indexOf(found)
             name.innerHTML += ":  loyer de "+found.getRentPrice()+"$"
             prixCPU.innerHTML = `prix CPU: ${found.CPUPrice}`
             prixRAM.innerHTML = `prix RAM: ${found.RAMPrice}`
             div.style.backgroundColor = found.couleur
-            console.log(found.couleur);
             div.id = "propertie"
+            div.append(nbcase)
             div.append(name)
             div.append(prixRAM)
             div.append(prixCPU)

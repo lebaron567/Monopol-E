@@ -4,6 +4,7 @@ import { initialize } from "./initialization.js";
 import { play } from "./play.js";
 import { buyComputer } from "./play.js";
 import { nextRound } from "./play.js";
+import { update } from "./play.js";
 window.buyComputer=buyComputer
 var image = document.getElementById("source");
 const board = document.querySelector('#gameBoard');
@@ -19,6 +20,7 @@ function addPlayer(){
         var nom = document.getElementById("nom").value;
         var color = document.getElementById("colordPlayer").value;
         const player = new Player(nom,color)
+        document.getElementById("nom").value = ""
         player.numPlayer = players.length
         let suppPlayer = document.createElement("option");
         suppPlayer.value = player.numPlayer
@@ -33,9 +35,12 @@ function addPlayer(){
         let money = document.createElement("p");
         let top = document.createElement("div");
         let properties = document.createElement("div");
+        let NBcase = document.createElement("p");
         div.id = player.name+"Info"
         div.className ="infoPlayer"
         name.id= "name"
+        NBcase.innerHTML = "case n°0"
+        NBcase.id = player.name+"NBcase"
         money.id = player.name+"Money"
         name.innerHTML= player.name
         top.style.background = player.couleur
@@ -46,6 +51,7 @@ function addPlayer(){
         top.append(name)
         top.append(money)
         div.append(top)
+        top.append(NBcase)
         div.append(properties)
         document.getElementById("infoPlayers").append(div)
     }
@@ -72,7 +78,7 @@ function start(){
         document.getElementById("menu").style.display = "none";
         console.log(players);
         document.getElementById("bou").style.display = "flex";
-        document.getElementById("ungrade").style.display = "flex";
+        //document.getElementById("ungrade").style.display = "flex";
         players[0].round = true
     }
 }
@@ -82,12 +88,8 @@ export function anim(){
     c.clearRect(0,0,board.width,board.height);
     for(var i= 0; i < players.length; i++){
         players[i].update()
-        
-        
     }
 }
-setInterval(anim,100)
-console.log(players)
 function perso(){
     for(var i= 0; i < players.length; i++){
         if(players[i].round == true){
@@ -105,10 +107,10 @@ function  lance(){
         if(players[i].round == true && players[i].throw ==false){
             players[i].throw = true
             players[i].throwDee()
-            num = i
-            
+            num = i 
         }
     }
+    update()
 }
 
 window.lance = lance

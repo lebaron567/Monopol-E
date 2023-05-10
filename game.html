@@ -82,10 +82,12 @@
             <button type="button"  onclick="OverValeur()">valider</button>
         </div>
         <div  id="addUgrade" class="addUgrade">
-            <label for="fname">le numero de la casse </label><br>
-            <select name="ordiPlayer" id="ordiPlayer" ></select>
+            <label for="fname">quelle casse améliorer </label><br>
+            <select name="ordiPlayerUP" id="ordiPlayerUP" ></select>
+            <button type="button"  onclick=" updateComputer()">upgrade</button>
             <button type="button"  onclick="closeUpgrade()">ferme</button>
         </div>
+        <button type="button"  class="ungrade" id="ungrade" onclick="displayUpgrade()">updrade</button>
         <div id="infoPlayers"> </div>
     </body>
 </html> 

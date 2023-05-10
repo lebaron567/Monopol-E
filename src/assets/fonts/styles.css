@@ -29,6 +29,13 @@ body{
     margin-top: 295px;
     display: none;
 }
+.ungrade{
+    z-index: 5;
+    position: absolute;
+    left: 131px;
+    margin-top: 295px;
+    display: none;
+}
 
 .info_box {
     margin-top: 337px;
@@ -133,7 +140,7 @@ p{
     position: absolute;
     background-color: aliceblue;
     padding: 35px;
-    left: 50%;
+    left: 30%;
     top: 20%;
     transform: translate(-50%, 5%);
     z-index: 8;
@@ -169,6 +176,7 @@ div#infoPlayers {
     margin: 10px;
     border-radius: 10px;
     width: 40%;
+    min-width: 190px;
 }
 
 div#topInfo {
@@ -181,3 +189,11 @@ div#topInfo {
 .infoPlayer p {
     padding: 5px;
 } 
+
+#propertie{
+    border-radius: 10px; 
+    margin-top: 5px;
+}
+#propertie p{
+    padding: 0px;
+}

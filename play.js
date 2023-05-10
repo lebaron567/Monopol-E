@@ -12,7 +12,7 @@ export function play(){
                     if (found.owner == "nobody"){
                         cardComputer(players[i])
                     }else if(found.owner == players[i].name){
-
+                        displayUpgrade()
                     }else{
                         const player = players.find(element => found.owner == element.name );
                         console.log(player.money);    console.log(players[i].money); console.log(found.rent);
@@ -34,6 +34,7 @@ export function play(){
                         div.innerHTML = `${players[i].name} donne ${found.rent} $ a ${player.name}`;
                         div.className = 'loyer';
                         info.prepend(div);
+                        update()
                         nextRound()
                     }
                 }else if(stockData[players[i].numCase].type == "chance" ){
@@ -58,6 +59,7 @@ export function play(){
                             displayInfo(` : à acheter la catrale ${found.name}`,players[i])
                             //afficher un message qui dis que le joueur a payer le proprietaire
                         }
+                        update()
                     }
                     displayInfo(`${players[i].name} : vous etre sur un case central`)
                     nextRound()
@@ -136,10 +138,13 @@ export const nextRound = () => {
     if (num >=0){
         if(num+1<players.length){
             players[num+1].round = true
+            displayInfo(": c'est a votre tour e jouer",players[num+1])
         }else{
             players[0].round = true
+            displayInfo(": c'est a votre tour e jouer",players[0])
         }
     }
+    update()
 }
 
 export const displayOverclocking = (player) => {
@@ -152,29 +157,52 @@ export const displayOverclocking = (player) => {
         document.getElementById("ordiPlayer").prepend(opition)
     }
     over.style.display = "flex";
+    update()
 }
 
-export const displayUpgrade = (player) => {
+export const displayUpgrade = () => {
+    document.getElementById("ordiPlayerUP").replaceChildren();
     let ugrade = document.getElementById("addUgrade")
-    const properties = player.displayProperties(cases)
+    const properties = perso().displayProperties(cases)
     let nbUgrade = 0
+    console.log(properties);
     for(let i=0; i<properties.length;i++){
-        const found = cases.find(element => element.name == properties[i].name );
-        let opition = document.createElement("option");
-        opition.value = i 
-        if (found.indexUpgrade ==null){
-            nbUgrade = 0
-        }else{
-            nbUgrade = found.indexUpgrade
-        }
-        opition.prepend(properties[i]+ nbUgrade +"upgrade") 
-        document.getElementById("ordiPlayer").prepend(opition)
+            const found = cases.find(element => element.name == properties[i] );
+            // if (found.indexUpgrade <3 ||found.indexUpgrade ==null){
+            let opition = document.createElement("option");
+            opition.value = i 
+            if (found.indexUpgrade ==null){
+                nbUgrade = 0
+            }else{
+                nbUgrade = found.indexUpgrade +1
+            }
+            opition.prepend(`${properties[i]}: ${nbUgrade} upgrade`) 
+            console.log(found);
+            document.getElementById("ordiPlayerUP").prepend(opition)
+        // }
     }
     ugrade.style.display = "flex";
+    update()
 }
+
+function updateComputer() {
+    let player = perso()
+    numero = document.getElementById("ordiPlayerUP").value;
+    const found = cases.find(element => element.name == player.displayProperties(cases)[numero] );
+    if (found.indexUpgrade == null){
+        found.indexUpgrade =0
+    }else if(found.indexUpgrade <3){
+        found.indexUpgrade ++
+    }
+    displayUpgrade()
+    update()
+}
+window.updateComputer = updateComputer
+window.displayUpgrade =displayUpgrade
+
 function closeUpgrade(){
     let ugrade = document.getElementById("addUgrade")
-    ugrade.style.display = "flex";
+    ugrade.style.display = "none";
 }
 window.closeUpgrade=closeUpgrade
 window.OverValeur = OverValeur
@@ -198,6 +226,43 @@ export const buyComputer = () => {
             document.getElementById("computer").style.display= "none"
         }
     }
+    update()
     nextRound()
 }
 
+function update(){
+    for(var i= 0; i < players.length; i++){
+        document.getElementById(players[i].name+"Money").innerHTML = players[i].money + " $"
+        document.getElementById(players[i].name +"properties").remove()
+        let newProper = document.createElement("div");
+        newProper.id = players[i].name +"properties"
+        let properties = players[i].displayProperties(cases)
+        for(var y= 0; y < properties.length; y++){
+            let div = document.createElement("div");
+            let name = document.createElement("p");
+            let prixRAM = document.createElement("p");
+            let prixCPU = document.createElement("p");
+            const found = cases.find(element => element.name == properties[y] );
+            name.innerHTML= properties[y]
+            name.innerHTML += ":  loyer de "+found.getRentPrice()+"$"
+            prixCPU.innerHTML = `prix CPU: ${found.CPUPrice}`
+            prixRAM.innerHTML = `prix RAM: ${found.RAMPrice}`
+            div.style.backgroundColor = found.couleur
+            console.log(found.couleur);
+            div.id = "propertie"
+            div.append(name)
+            div.append(prixRAM)
+            div.append(prixCPU)
+            newProper.append(div)
+        }
+        document.getElementById(players[i].name+"Info").append(newProper)
+    }
+}
+
+function perso(){
+    for(var i= 0; i < players.length; i++){
+        if(players[i].round == true){
+            return players[i]
+        }
+    }
+}

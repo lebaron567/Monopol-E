@@ -58,23 +58,23 @@ export function play(){
                             }
                         }
                         players[i].money-=taxes
-                        displayInfo(`les impots vous on ratraper vous payez ${taxes}$ d'impot`)
+                        displayInfo(`les impots vous on ratraper vous payez ${taxes}$ d'impot`,players[i])
                         break;
                         case 2: 
-                        displayInfo(`vous faites un tour complet en passant par la case depart`)
+                        displayInfo(`vous faites un tour complet en passant par la case depart`,players[i])
                         players[i].money+=500
                         break;
                         case 3: 
-                        displayInfo(`il y a un bug dans la banque, vous recever un virement de 300$`)
+                        displayInfo(`il y a un bug dans la banque, vous recever un virement de 300$`,players[i])
                         players[i].money+=300
                         break;
                         case 4: 
-                        displayInfo(`vente forduleuse, vous avez vendu une carte graphique qui a servis a vendre de la cryptomonay. vous aller directement en case prison sans passer par la case depart`)
+                        displayInfo(`vente forduleuse, vous avez vendu une carte graphique qui a servis a vendre de la cryptomonay. vous aller directement en case prison sans passer par la case depart`,players[i])
                         players[i].axe=2
                         players[i].pos=1
                         break;
                         case 5: 
-                        displayInfo(`vous etes d'humeur genereuse et donner donc 150$ a tous les autres joueurs`)
+                        displayInfo(`vous etes d'humeur genereuse et donner donc 150$ a tous les autres joueurs`,players[i])
                         players[i].money-=150*players.length
                         for(playerloop of players){
                             if(playerloop!=players[i]){
@@ -83,7 +83,7 @@ export function play(){
                         }
                         break;
                         case 6: 
-                        displayInfo(`aller directement a la case Alienware m16`)
+                        displayInfo(`aller directement a la case Alienware m16`,players[i])
                         players[i].axe=4
                         players[i].pos=8
                         break;
@@ -110,11 +110,11 @@ export function play(){
                         }
                         update()
                     }
-                    displayInfo(`${players[i].name} : vous etre sur un case central`)
+                    displayInfo(`: vous etre sur un case central`, players[i])
                     nextRound()
                 }else if(stockData[players[i].numCase].type == "overclocking" ){
                     displayInfo(` : vous etre sur un case overclocking`,players[i])
-                    if (players[i].displayProperties().length !=0) {
+                    if (players[i].displayProperties(cases).length !=0) {
                         displayOverclocking(players[i])
                         cases[16].boost(cases[numero], cases)
                         numero=-1

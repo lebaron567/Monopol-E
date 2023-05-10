@@ -19,7 +19,7 @@ export function play(){
                         div.innerHTML = `${players[i].name} donne ${found.rent} $ a ${player.name}`;
                         div.className = 'loyer';
                         info.prepend(div);
-                        
+                        nextRound()
                     }
                 }else if(stockData[players[i].numCase].type == "chance" ){
                     displayInfo(`${players[i].name} : vous etre sur un case chance`)
@@ -45,7 +45,7 @@ export function play(){
                         }
                     }
                     nextRound()
-                }
+                }else{nextRound()}
             }
         }
     } 

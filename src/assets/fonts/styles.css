@@ -50,7 +50,7 @@ body{
     position: fixed;
     height:auto;
     width: 400px;
-    left: 50%;
+    left: 30%;
     top: 10%;
     transform: translate(-50%, 5%);
     border: 2px solid #666;

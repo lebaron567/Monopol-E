@@ -66,6 +66,8 @@ function addPlayer(){
 function suppPlayer(){
     var id = document.getElementById("suppPlayer").value;
     document.getElementById(players[id].name).remove()
+    document.getElementById(players[id].name+"Info").remove()
+    console.log(players[id].name);
     players.splice(id, 1);
     for(let i=0; i<players.length; i++){
         players[i].numPlayer = i
@@ -79,7 +81,7 @@ window.addPlayer = addPlayer;
 function start(){
     if(players.length>=2){
         setInterval(anim,100)
-        setInterval(play,1000)
+        setInterval(play,100)
         document.getElementById("menu").style.display = "none";
         console.log(players);
         document.getElementById("bou").style.display = "flex";
@@ -95,10 +97,14 @@ export function anim(){
         document.getElementById(players[i].name +"properties").remove()
         let newProper = document.createElement("div");
         newProper.id = players[i].name +"properties"
-        let Properties = players[i].displayProperties(cases)
-        for(var y= 0; y < Properties.length; y++){
+        let properties = players[i].displayProperties(cases)
+        for(var y= 0; y < properties.length; y++){
             let name = document.createElement("p");
-            name.innerHTML= Properties[y]
+            const found = cases.find(element => element.name == properties[y] );
+            name.innerHTML= '<span style="color:'+found.couleur+'">'+properties[y]+'</span>'
+            if(found.indexUpgrade == null){
+                name.innerHTML += ":  loyer de "+found.rent+"$"
+            }
             newProper.append(name)
         }
         document.getElementById(players[i].name+"Info").append(newProper)

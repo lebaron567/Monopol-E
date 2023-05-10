@@ -3,6 +3,7 @@ import { stockData } from './src/data/data.js';
 import { initialize } from "./initialization.js";
 import { play } from "./play.js";
 import { buyComputer } from "./play.js";
+import { nextRound } from "./play.js";
 window.buyComputer=buyComputer
 var image = document.getElementById("source");
 const board = document.querySelector('#gameBoard');
@@ -11,18 +12,7 @@ board.width = board.clientWidth;
 board.height = board.clientHeight;
 
 export let players = []
-// const player1 = new Player("clavier")
-// player1.round = true
-// players.push(player1)
-// const player2 = new Player("ecren")
-// const player3 = new Player("cable")
-// const player4 = new Player("batrie")
-// player2.numPlayer = 1
-// player3.numPlayer = 2
-// player4.numPlayer = 3
-// players.push(player2,player3,player4) 
-// setInterval(anim,100)
-// setInterval(play,100)
+
 
 function addPlayer(){
     if (players.length <4){
@@ -102,9 +92,7 @@ export function anim(){
             let name = document.createElement("p");
             const found = cases.find(element => element.name == properties[y] );
             name.innerHTML= '<span style="color:'+found.couleur+'">'+properties[y]+'</span>'
-            if(found.indexUpgrade == null){
-                name.innerHTML += ":  loyer de "+found.rent+"$"
-            }
+            name.innerHTML += ":  loyer de "+found.getRentPrice()+"$"
             newProper.append(name)
         }
         document.getElementById(players[i].name+"Info").append(newProper)
@@ -155,21 +143,27 @@ function closeForm() {
     document.getElementById("computer").style.display = "none";
     nextRound()
 }
-function nextRound(){
-    let num = 0
-    for(var i= 0; i < players.length; i++){
-        if(players[i].round == true){
-            num = i 
-            players[i].throw = false
-            players[i].round = false
-        }
-    }
-    if(num+1<players.length){
-        players[num+1].round = true
-    }else{
-        players[0].round = true
-    }
-}
+// function nextRound(){
+//     let num = 0
+//     for(var i= 0; i < players.length; i++){
+//         if(players[i].round == true){
+//             if(players.doubleCount=0){
+//                 num = i 
+//                 players[i].throw = false
+//                 players[i].round=false
+//             }else{
+//                 num = -1
+//             }
+//         }
+//     }
+//     if (num >=0){
+//         if(num+1<players.length){
+//             players[num+1].round = true
+//         }else{
+//             players[0].round = true
+//         }
+//     }
+// }
 
 function OverValeur(){
     var numero = document.getElementById("ordiPlayer").value;

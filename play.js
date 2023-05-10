@@ -11,6 +11,8 @@ export function play(){
                    const found = cases.find(element => element.name == stockData[players[i].numCase].name );
                     if (found.owner == "nobody"){
                         cardComputer(players[i])
+                    }else if(found.owner == players[i].name){
+
                     }else{
                         const player = players.find(element => found.owner == element.name );
                         console.log(player.money);    console.log(players[i].money); console.log(found.rent);
@@ -35,7 +37,7 @@ export function play(){
                         nextRound()
                     }
                 }else if(stockData[players[i].numCase].type == "chance" ){
-                    displayInfo(`${players[i].name} : vous etre sur un case chance`)
+                    displayInfo(`$ : vous etre sur un case chance`,players[i])
                     nextRound()
                 }else if(stockData[players[i].numCase].type == "central" ){
                     const found = cases.find(element => element.name == stockData[players[i].numCase].name );
@@ -53,23 +55,25 @@ export function play(){
                         if(players[i].name != player.name){
                             players[i].money-=cases[players[i].numCase].upgrade[indexCentral]
                             player.money+=cases[players[i].numCase].upgrade[indexCentral]
+                            displayInfo(` : à acheter la catrale ${found.name}`,players[i])
                             //afficher un message qui dis que le joueur a payer le proprietaire
                         }
                     }
                     displayInfo(`${players[i].name} : vous etre sur un case central`)
                     nextRound()
                 }else if(stockData[players[i].numCase].type == "overclocking" ){
-                    displayInfo(`${players[i].name} : vous etre sur un case overclocking`)
-                    displayOverclocking(players[i])
-                    while(numero<0){}
-                    cases[16].boost(cases[numero], cases)
-                    numero=-1
+                    displayInfo(` : vous etre sur un case overclocking`,players[i])
+                    if (players[i].displayProperties().length !=0) {
+                        displayOverclocking(players[i])
+                        cases[16].boost(cases[numero], cases)
+                        numero=-1
+                    }
                     
                 }else if(stockData[players[i].numCase].type == "tour du monde" ){
-                    displayInfo(`${players[i].name} : vous etre sur un case tour du monde`)
+                    displayInfo(` : vous etre sur un case tour du monde`,players[i])
                     nextRound()
                 }else if(stockData[players[i].numCase].type == "prison" ){
-                    displayInfo(`${players[i].name} : vous etre sur un case prison`)
+                    displayInfo(` : vous etre sur un case prison`,players[i] )
                     nextRound()
                 }else if(stockData[players[i].numCase].type == "taxe"){
                     let taxes = 0
@@ -79,7 +83,8 @@ export function play(){
                         }
                     }
                     players[i].money-=taxes
-                    //afficher un message qui dis que le joueur a payer des taxes
+                    displayInfo(`: vous avez payer ${taxes}$ de taxes`, players[i])
+                    nextRound()
                 }
             }
             
@@ -87,11 +92,11 @@ export function play(){
     } 
 } 
 
-export function displayInfo(text){
+export function displayInfo(text,player){
     const info = document.querySelector('.info_box');
     var div = document.createElement('div');
     div.id = 'textInfo';
-    div.innerHTML = text;
+    div.innerHTML = '<span style="color:'+player.couleur+'">'+player.name+'</span>'+ text;
     div.className = 'info';
     info.prepend(div);
 }
@@ -112,19 +117,28 @@ function cardComputer(player){
     prixAchat 
 }
 
-const nextRound = () => {
+export const nextRound = () => {
     let num = 0
     for(var i= 0; i < players.length; i++){
         if(players[i].round == true){
-            num = i 
-            players[i].throw = false
-            players[i].round=false
+            console.log(players[i].doubleCount);
+            if(players[i].doubleCount ==0){
+                num = i 
+                players[i].throw = false
+                players[i].round=false
+                console.log("fffff");
+            }else{
+                num = -1
+                players[i].throw = false
+            }
         }
     }
-    if(num+1<players.length){
-        players[num+1].round = true
-    }else{
-        players[0].round = true
+    if (num >=0){
+        if(num+1<players.length){
+            players[num+1].round = true
+        }else{
+            players[0].round = true
+        }
     }
 }
 
@@ -140,11 +154,35 @@ export const displayOverclocking = (player) => {
     over.style.display = "flex";
 }
 
-let numero = -1
+export const displayUpgrade = (player) => {
+    let ugrade = document.getElementById("addUgrade")
+    const properties = player.displayProperties(cases)
+    let nbUgrade = 0
+    for(let i=0; i<properties.length;i++){
+        const found = cases.find(element => element.name == properties[i].name );
+        let opition = document.createElement("option");
+        opition.value = i 
+        if (found.indexUpgrade ==null){
+            nbUgrade = 0
+        }else{
+            nbUgrade = found.indexUpgrade
+        }
+        opition.prepend(properties[i]+ nbUgrade +"upgrade") 
+        document.getElementById("ordiPlayer").prepend(opition)
+    }
+    ugrade.style.display = "flex";
+}
+function closeUpgrade(){
+    let ugrade = document.getElementById("addUgrade")
+    ugrade.style.display = "flex";
+}
+window.closeUpgrade=closeUpgrade
 window.OverValeur = OverValeur
+let numero = -1
 function OverValeur(){
     numero = document.getElementById("ordiPlayer").value;
     document.getElementById("Overclocking").style.display = "none"
+    nextRound()
 }
 
 export const buyComputer = () => {
@@ -154,19 +192,12 @@ export const buyComputer = () => {
                 cases[players[i].numCase].owner=players[i].name
                 players[i].money-=cases[players[i].numCase].price
             }else {
-                //afficher vous n'aver aps assez d'argent 
+                displayInfo(": vous avez pas assez d'agent", players[i])
             }
            
             document.getElementById("computer").style.display= "none"
-            players[i].throw=false
-            players[i].round=false
-            if(i+1<players.length){
-                players[i+1].round = true
-            }else{
-                players[0].round = true
-            }
-            return
         }
     }
+    nextRound()
 }
 

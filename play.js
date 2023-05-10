@@ -39,6 +39,55 @@ export function play(){
                     }
                 }else if(stockData[players[i].numCase].type == "chance" ){
                     displayInfo(`$ : vous etre sur un case chance`,players[i])
+                    let chanceNum = Math.floor(Math.random()*7)
+                    switch(chanceNum){
+                        case 0: 
+                        displayInfo(`c'est votre anniversaire tous les joueurs vous donner 100$`)
+                        players[i].money+=100*players.length
+                        for(playerloop of players){
+                            if(playerloop!=players[i]){
+                                playerloop.money-=100
+                            }
+                        }
+                        break;
+                        case 1: 
+                        let taxes = 0
+                        for (let j = 0; j < cases.length; j++){
+                            if(cases[j].owner === players[i]){
+                                taxes+= (cases[j].price)/10
+                            }
+                        }
+                        players[i].money-=taxes
+                        displayInfo(`les impots vous on ratraper vous payez ${taxes}$ d'impot`)
+                        break;
+                        case 2: 
+                        displayInfo(`vous faites un tour complet en passant par la case depart`)
+                        players[i].money+=500
+                        break;
+                        case 3: 
+                        displayInfo(`il y a un bug dans la banque, vous recever un virement de 300$`)
+                        players[i].money+=300
+                        break;
+                        case 4: 
+                        displayInfo(`vente forduleuse, vous avez vendu une carte graphique qui a servis a vendre de la cryptomonay. vous aller directement en case prison sans passer par la case depart`)
+                        players[i].axe=2
+                        players[i].pos=1
+                        break;
+                        case 5: 
+                        displayInfo(`vous etes d'humeur genereuse et donner donc 150$ a tous les autres joueurs`)
+                        players[i].money-=150*players.length
+                        for(playerloop of players){
+                            if(playerloop!=players[i]){
+                                playerloop.money+=150
+                            }
+                        }
+                        break;
+                        case 6: 
+                        displayInfo(`aller directement a la case Alienware m16`)
+                        players[i].axe=4
+                        players[i].pos=8
+                        break;
+                    }
                     nextRound()
                 }else if(stockData[players[i].numCase].type == "central" ){
                     const found = cases.find(element => element.name == stockData[players[i].numCase].name );
@@ -73,6 +122,14 @@ export function play(){
                     
                 }else if(stockData[players[i].numCase].type == "tour du monde" ){
                     displayInfo(` : vous etre sur un case tour du monde`,players[i])
+                    let x2 = 0
+                    if(x2>25){
+                        players[i].pos=x2-24
+                    }else{
+                        players[i].money+=500
+                        players[i].axe=Math.floor(x/8)
+                        players[i].pose=x%8
+                    }
                     nextRound()
                 }else if(stockData[players[i].numCase].type == "prison" ){
                     displayInfo(` : vous etre sur un case prison`,players[i] )

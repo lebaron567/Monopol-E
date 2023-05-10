@@ -120,6 +120,14 @@ export function play(){
                     
                 }else if(stockData[players[i].numCase].type == "tour du monde" ){
                     displayInfo(` : vous etre sur un case tour du monde`,players[i])
+                    let x2 = 0
+                    if(x2>25){
+                        players[i].pos=x2-24
+                    }else{
+                        players[i].money+=500
+                        players[i].axe=Math.floor(x/8)
+                        players[i].pose=x%8
+                    }
                     nextRound()
                 }else if(stockData[players[i].numCase].type == "prison" ){
                     displayInfo(` : vous etre sur un case prison`,players[i] )

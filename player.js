@@ -26,12 +26,49 @@ export class Player{
         this.name = name
         this.couleur =couleur
     }
-
+    doubleCount=0
+    throwCount=0
+    
 
     throwDee(){
         this.throw = true
         const dee1 = Math.floor(Math.random() * 6)+1;
         const dee2 = Math.floor(Math.random() * 6)+1;
+        var div = document.createElement('div');
+        div.id = 'textInfo';
+        div.innerHTML =  '<span style="color:'+this.couleur+'">'+this.name+'</span>'+ ` : lanser les dée: ${dee1} et ${dee2}. Vous avanser de ${dee1+dee2} casse`;
+        div.className = 'lancerDee';
+        info.prepend(div);
+        if (dee1===dee2){
+            div.innerHTML = '<span style="color:'+this.couleur+'">'+this.name+'</span>'+ ' : as fais un double et peu donc lancer les dees a nouveau'
+            info.prepend(div);
+            this.doubleCount+=1
+            let deplasement = dee1 +dee2
+            if (deplasement + this.numCase >= 32){
+                this.numCase = this.numCase + deplasement-32
+            }else{
+                this.money += 500
+                this.numCase = this.numCase + deplasement
+            }
+            this.axe = stockData[this.numCase].axe
+            this.pos = stockData[this.numCase].pos
+            this.throwDee()
+        }
+        if(this.doubleCount===3){
+            div.innerHTML = '<span style="color:'+this.couleur+'">'+this.name+'</span>'+ '  as fait 3 double, et ses fait arreter par la police pour fraude fiscal, il se retouve en case prison.';
+            info.prepend(div);
+            this.axe=2
+            this.pos=1
+            this.doubleCount=0
+            return
+        }
+        if(this.doubleCount>0&&dee1!=dee2){
+            this.doubleCount=0
+        }
+        if(this.axe===2&&this.pos===1&&this.doubleCount===0&&this.throwCount<3){
+            
+            return
+        }
         let deplasement = dee1 +dee2
         if (deplasement + this.numCase >= 32){
             this.numCase = this.numCase + deplasement-32
@@ -41,12 +78,6 @@ export class Player{
         }
         this.axe = stockData[this.numCase].axe
         this.pos = stockData[this.numCase].pos
-
-        var div = document.createElement('div');
-        div.id = 'textInfo';
-        div.innerHTML =  '<span style="color:'+this.couleur+'">'+this.name+'</span>'+ ` : lanser les dée: ${dee1} et ${dee2}. Vous avanser de ${dee1+dee2} casse`;
-        div.className = 'lancerDee';
-        info.prepend(div);
     }
 
     draw(){
@@ -93,11 +124,11 @@ export class Player{
     addOrLessMoney(num){
         this.money=this.money+num
     }
-    displayProperties(computer){
+    displayProperties(cases){
         let result =[]
-        for (let i=0; i<computer.length; i++){
-            if(computer[i].owner===this.name){
-                result.push(computer[i].name)
+        for (let i=0; i<cases.length; i++){
+            if(cases[i].owner===this.name){
+                result.push(cases[i].name)
             }
         }
         return result

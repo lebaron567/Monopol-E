@@ -6,13 +6,13 @@ export class Overclocking{
         this.pos = pos
         this.coste = coste
     }
-    boost(propertieSlected, computer){
+    boost(propertieSlected, cases){
         if(this.lastBoosted!==""){
             let i =0
-            for (;this.lastBoosted===computer[i].name;){
+            for (;this.lastBoosted== cases[i].name;){
                 i++
             }
-            computer[i].isBoosted=false
+         cases[i].isBoosted=false
         }
         propertieSlected.isBoosted=true
     }

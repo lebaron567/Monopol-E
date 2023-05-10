@@ -18,5 +18,12 @@ export class Computer{
         this.owner=playerName
         this.isBoosted=false
     }
+    getRentPrice(){
+        if(this.indexUpgrade==null){
+            return this.rent
+        }else{
+            return this.upgrade[this.indexUpgrade]
+        }
+    }
 
 }

@@ -1,6 +1,7 @@
 export class Central{
     owner = "nobody"
-    constructor(axe, pos, prix, louer){
+    constructor(name, axe, pos, prix, louer){
+        this.name = name
         this.axe = axe
         this.pose = pos
         this.prix = prix

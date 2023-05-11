@@ -7,12 +7,12 @@
 
 ## **HOW TO INSTALL** 
 
-- * `need to be completed`*
+- * `install live server extension on visual studio code`*
 
 
 ## **HOW TO LAUNCH** 
 
-- * `need to be completed`*
+- * `lauch live server`*
 
 
 

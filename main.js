@@ -29,7 +29,6 @@ function addPlayer(){
         document.getElementById("suppPlayer").append(suppPlayer)
         // document.getElementById("loyer").innerHTML += ", " + player.name
         players.push(player)
-        console.log(players);
         let div = document.createElement("div");
         let name = document.createElement("p");
         let money = document.createElement("p");
@@ -60,7 +59,6 @@ function suppPlayer(){
     var id = document.getElementById("suppPlayer").value;
     document.getElementById(players[id].name).remove()
     document.getElementById(players[id].name+"Info").remove()
-    console.log(players[id].name);
     players.splice(id, 1);
     for(let i=0; i<players.length; i++){
         players[i].numPlayer = i
@@ -76,9 +74,8 @@ function start(){
         setInterval(anim,100)
         setInterval(play,100)
         document.getElementById("menu").style.display = "none";
-        console.log(players);
         document.getElementById("bou").style.display = "flex";
-        //document.getElementById("ungrade").style.display = "flex";
+        // document.getElementById("ungrade").style.display = "flex";
         players[0].round = true
     }
 }
@@ -101,9 +98,7 @@ function perso(){
 
 function  lance(){
     let num =0
-    console.log()
     for(var i= 0; i < players.length; i++){
-        //console.log(players[i].name,players[i].round, players[i].throw);
         if(players[i].round == true && players[i].throw ==false){
             players[i].throw = true
             players[i].throwDee()
@@ -119,9 +114,7 @@ window.lance = lance
 
 
 export let cases = initialize()
-console.log(cases[0])
 const player = new Player("nobody");
-console.log(player.displayProperties(cases[1]))
 
 
 function openForm() {
@@ -157,7 +150,6 @@ function closeForm() {
 function OverValeur(){
     var numero = document.getElementById("ordiPlayer").value;
     document.getElementById("Overclocking").style.display = "none"
-    console.log(numero)
 }
 window.OverValeur = OverValeur
 window.openForm = openForm

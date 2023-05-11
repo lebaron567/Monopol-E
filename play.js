@@ -4,7 +4,6 @@ const info = document.querySelector('.info_box');
  
 export function play(){
     for(var i= 0; i < players.length; i++){
-        console.log(players[i].round);
         if( players[i].money <0){
             displayInfo(": vous avez plus d'agent vous avez perdu", players[i])
             const properties= players[i].displayProperties()
@@ -21,8 +20,10 @@ export function play(){
                    const found = cases.find(element => element.name == stockData[players[i].numCase].name );
                     if (found.owner == "nobody"){
                         cardComputer(players[i])
+                        players[i].throw = false
                     }else if(found.owner == players[i].name){
                         displayUpgrade()
+                        players[i].throw = false
                     }else{
                         const player = players.find(element => found.owner == element.name );
                         // faire le cas ou la case est down a cause d'une carte chance 
@@ -43,7 +44,6 @@ export function play(){
                         div.innerHTML = `${players[i].name} donne ${found.rent} $ a ${player.name}`;
                         div.className = 'loyer';
                         info.prepend(div);
-                        update()
                         nextRound()
                     }
                 }else if(stockData[players[i].numCase].type == "chance" ){
@@ -53,7 +53,7 @@ export function play(){
                         case 0: 
                         displayInfo(`c'est votre anniversaire tous les joueurs vous donner 100$`)
                         players[i].money+=100*players.length
-                        for(playerloop of players){
+                        for(let playerloop of players){
                             if(playerloop!=players[i]){
                                 playerloop.money-=100
                             }
@@ -92,7 +92,7 @@ export function play(){
                         case 5: 
                         displayInfo(` vous etes d'humeur genereuse et donner donc 150$ a tous les autres joueurs`,players[i])
                         players[i].money-=150*players.length-1
-                        for(playerloop of players){
+                        for(let playerloop of players){
                             if(playerloop!=players[i]){
                                 playerloop.money+=150
                             }
@@ -110,6 +110,7 @@ export function play(){
                 }else if(stockData[players[i].numCase].type == "central" ){
                     const found = cases.find(element => element.name == stockData[players[i].numCase].name );
                     if (found.owner == "nobody"){
+                        players[i].throw = false
                         cardCantrel(players[i])
                     }else {
                         let indexCentral=0
@@ -126,13 +127,13 @@ export function play(){
                             displayInfo(` : à acheter la catrale ${found.name}`,players[i])
                             //afficher un message qui dis que le joueur a payer le proprietaire
                         }
-                        update()
+                        nextRound()
                     }
                     displayInfo(`: vous etre sur un case central`, players[i])
-                    nextRound()
                 }else if(stockData[players[i].numCase].type == "overclocking" ){
                     displayInfo(` : vous etre sur un case overclocking`,players[i])
                     if (players[i].displayProperties(cases).length !=0) {
+                        players[i].throw = false
                         displayOverclocking(players[i])
                     }else{
                         nextRound()
@@ -155,6 +156,8 @@ export function play(){
                     players[i].money-=taxes
                     displayInfo(`: vous avez payer ${taxes}$ de taxes`, players[i])
                     nextRound()
+                }else{
+                   nextRound() 
                 }
                 update()
             }
@@ -221,12 +224,13 @@ export const nextRound = () => {
     if (num >=0){
         if(num+1<players.length){
             players[num+1].round = true
-            displayInfo(": c'est a votre tour e jouer",players[num+1])
+            displayInfo(": c'est a votre tour de jouer",players[num+1])
         }else{
             players[0].round = true
-            displayInfo(": c'est a votre tour e jouer",players[0])
+            displayInfo(": c'est a votre tour de jouer",players[0])
         }
     }
+    console.log(perso())
     update()
 }
 
@@ -265,11 +269,12 @@ export const displayUpgrade = () => {
     }
     ugrade.style.display = "flex";
     update()
+    console.log("test");
 }
 
 function updateComputer() {
     let player = perso()
-    numero = document.getElementById("ordiPlayerUP").value;
+    let numero = document.getElementById("ordiPlayerUP").value;
     const found = cases.find(element => element.name == player.displayProperties(cases)[numero] );
     if (found.indexUpgrade == null){
         found.indexUpgrade =0
@@ -311,21 +316,23 @@ function displayTour(){
 }
 function TourDuMonde(){
     let x2 = document.getElementById("tour").value
-    player =perso()
-    if(x2>25){
-        player.pos=x2-24
-    }else{
-        player.money+=500
-        player.axe=Math.floor(x/8)
-        player.pose=x%8
-    }
+    let player = perso()
+    player.numCase = x2
+    // if(x2>25){
+    //     player.pos=x2-24
+    // }else{
+    //     player.money+=500
+    //     player.axe=Math.floor(x2/8)
+    //     player.pose=x2%8
+    // }
     document.getElementById("tourDuMonde").style.display ="none"
-    perso.throw = false
+    nextRound()
 }
 
 export const buyComputer = () => {
     for (let i=0 ; i<players.length; i++){
         if(players[i].round === true){
+            console.log(players[i].money, cases[players[i].numCase].price);
             if(players[i].money >= cases[players[i].numCase].price){
                 cases[players[i].numCase].owner=players[i].name
                 players[i].money-=cases[players[i].numCase].price
@@ -344,30 +351,33 @@ export function update(){
         document.getElementById(players[i].name+"Money").innerHTML = players[i].money + " $"
         document.getElementById(players[i].name +"properties").remove()
         document.getElementById(players[i].name+"NBcase").innerHTML = "case n°"+players[i].numCase
-        let name = document.createElement("p");
         let newProper = document.createElement("div");
         newProper.id = players[i].name +"properties"
         let properties = players[i].displayProperties(cases)
+        console.log(`${players[i].name} : ${properties}`);
         for(var y= 0; y < properties.length; y++){
             let div = document.createElement("div");
             let name = document.createElement("p");
             let nbcase = document.createElement("p");
-            const found = cases.find(element => element.owner == players[i].name );
-            console.log(found);
-            name.innerHTML= properties[y] 
+            const found = cases.find(element => element.name == properties[y] );
+            name.innerHTML= properties[y]
             nbcase.innerHTML ="case n°"+ cases.indexOf(found)
-            name.innerHTML += ":  loyer de "+found.getRentPrice()+"$"
-            div.style.backgroundColor = found.couleur
             div.id = "propertie"
             div.append(nbcase)
             div.append(name)
-            if(found.type =="computer" ){
+            console.log(found.type);
+            if(found.type == "computer" ){
+                name.innerHTML += ":  loyer de "+found.getRentPrice()+"$"
+                div.style.backgroundColor = found.couleur
                 let prixRAM = document.createElement("p");
                 let prixCPU = document.createElement("p");
                 prixCPU.innerHTML = `prix CPU: ${found.CPUPrice}`
                 prixRAM.innerHTML = `prix RAM: ${found.RAMPrice}`
                 div.append(prixRAM)
                 div.append(prixCPU)
+            }else{
+                div.style.backgroundColor = "#B8860B"
+                console.log("test");
             }
             newProper.append(div)
         }

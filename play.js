@@ -68,19 +68,24 @@ export function play(){
                         }
                         players[i].money-=taxes
                         displayInfo(`les impots vous on ratraper vous payez ${taxes}$ d'impot`,players[i])
+                        nextRound()
                         break;
                         case 2: 
                         displayInfo(`vous faites un tour complet en passant par la case depart`,players[i])
                         players[i].money+=500
+                        nextRound()
                         break;
                         case 3: 
                         displayInfo(`il y a un bug dans la banque, vous recever un virement de 300$`,players[i])
                         players[i].money+=300
+                        nextRound()
                         break;
                         case 4: 
                         displayInfo(`vente forduleuse, vous avez vendu une carte graphique qui a servis a vendre de la cryptomonay. vous aller directement en case prison sans passer par la case depart`,players[i])
                         players[i].axe=2
                         players[i].pos=1
+                        players[i].prison = true
+                        nextRound()
                         break;
                         case 5: 
                         displayInfo(`vous etes d'humeur genereuse et donner donc 150$ a tous les autres joueurs`,players[i])
@@ -90,6 +95,7 @@ export function play(){
                                 playerloop.money+=150
                             }
                         }
+                        nextRound()
                         break;
                         case 6: 
                         displayInfo(`aller directement a la case Alienware m16`,players[i])
@@ -97,11 +103,11 @@ export function play(){
                         players[i].pos=8
                         break;
                     }
-                    nextRound()
+                    
                 }else if(stockData[players[i].numCase].type == "central" ){
                     const found = cases.find(element => element.name == stockData[players[i].numCase].name );
                     if (found.owner == "nobody"){
-                        cardComputer(players[i])
+                        cardCantrel(players[i])
                     }else {
                         let indexCentral=0
                         const casesOfCentral = [4, 12, 20 ,28]
@@ -125,19 +131,13 @@ export function play(){
                     displayInfo(` : vous etre sur un case overclocking`,players[i])
                     if (players[i].displayProperties(cases).length !=0) {
                         displayOverclocking(players[i])
+                    }else{
                         nextRound()
                     }
                 }else if(stockData[players[i].numCase].type == "tour du monde" ){
                     displayInfo(` : vous etre sur un case tour du monde`,players[i])
+                    players[i].throw = false
                     displayTour()
-                    let x2 = 0
-                    if(x2>25){
-                        players[i].pos=x2-24
-                    }else{
-                        players[i].money+=500
-                        players[i].axe=Math.floor(x/8)
-                        players[i].pose=x%8
-                    }
                 }else if(stockData[players[i].numCase].type == "prison" ){
                     displayInfo(` : vous etre sur un case prison`,players[i] )
                     nextRound()
@@ -152,6 +152,7 @@ export function play(){
                     displayInfo(`: vous avez payer ${taxes}$ de taxes`, players[i])
                     nextRound()
                 }
+                update()
             }
             
         }if(players[i].lost){
@@ -183,6 +184,19 @@ function cardComputer(player){
     document.getElementById("upgrade4").innerHTML = stockData[player.numCase].upgrade[3] +"$"
     document.getElementById("priceRAM").innerHTML = stockData[player.numCase].RAMPrice +"$"
     document.getElementById("priceCPU").innerHTML = stockData[player.numCase].CPUPrice +"$"
+    prixAchat 
+}
+
+function cardCantrel(player){
+    let computer = document.getElementById("computer")
+    computer.style.display = "flex";
+    document.getElementById("titre").style.backgroundColor = "#B8860B"	;
+    document.getElementById("nameCard").innerHTML = stockData[player.numCase].name
+    document.getElementById("prixAchat").innerHTML = stockData[player.numCase].price+"$"
+    document.getElementById("upgrade1").innerHTML = stockData[player.numCase].rent[0] +"$"
+    document.getElementById("upgrade2").innerHTML = stockData[player.numCase].rent[1] +"$"
+    document.getElementById("upgrade3").innerHTML = stockData[player.numCase].rent[2] +"$"
+    document.getElementById("upgrade4").innerHTML = stockData[player.numCase].rent[3] +"$"
     prixAchat 
 }
 
@@ -314,7 +328,6 @@ export const buyComputer = () => {
             }else {
                 displayInfo(": vous avez pas assez d'agent", players[i])
             }
-           
             document.getElementById("computer").style.display= "none"
         }
     }
@@ -334,21 +347,24 @@ export function update(){
         for(var y= 0; y < properties.length; y++){
             let div = document.createElement("div");
             let name = document.createElement("p");
-            let prixRAM = document.createElement("p");
             let nbcase = document.createElement("p");
-            let prixCPU = document.createElement("p");
-            const found = cases.find(element => element.name == properties[y] );
+            const found = cases.find(element => element.owner == players[i].name );
+            console.log(found);
             name.innerHTML= properties[y] 
             nbcase.innerHTML ="case n°"+ cases.indexOf(found)
             name.innerHTML += ":  loyer de "+found.getRentPrice()+"$"
-            prixCPU.innerHTML = `prix CPU: ${found.CPUPrice}`
-            prixRAM.innerHTML = `prix RAM: ${found.RAMPrice}`
             div.style.backgroundColor = found.couleur
             div.id = "propertie"
             div.append(nbcase)
             div.append(name)
-            div.append(prixRAM)
-            div.append(prixCPU)
+            if(found.type =="computer" ){
+                let prixRAM = document.createElement("p");
+                let prixCPU = document.createElement("p");
+                prixCPU.innerHTML = `prix CPU: ${found.CPUPrice}`
+                prixRAM.innerHTML = `prix RAM: ${found.RAMPrice}`
+                div.append(prixRAM)
+                div.append(prixCPU)
+            }
             newProper.append(div)
         }
         document.getElementById(players[i].name+"Info").append(newProper)

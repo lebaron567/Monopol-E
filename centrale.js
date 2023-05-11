@@ -7,5 +7,8 @@ export class Central{
         this.prix = prix
         this.louer = louer
     }
-    
+    buy(playerName){
+        this.owner=playerName
+        this.isBoosted=false
+    }
 }

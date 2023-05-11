@@ -47,10 +47,20 @@ export class Player{
                 displayInfo( ': vous sorter de prison',this)
                 info.prepend(div);
                 this.prison=false
+                let deplasement = dee1 +dee2
+                if (deplasement + this.numCase >= 32){
+                    this.numCase = this.numCase + deplasement-32
+                    this.money += 500
+                }else{
+                    this.numCase = this.numCase + deplasement
+                }
+                this.axe = stockData[this.numCase].axe
+                this.pos = stockData[this.numCase].pos
             }else{ 
-                displayInfo(' : vous rester en prison, plus que '+ 3 -this.throwCount+ " essais",this)
-                info.prepend(div);
                 this.throwCount ++
+                displayInfo(" : vous rester en prison, plus que " + (4 - this.throwCount) + " essais",this)
+                info.prepend(div);
+                
             }
             return
         }

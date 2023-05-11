@@ -47,7 +47,7 @@ export function play(){
                         nextRound()
                     }
                 }else if(stockData[players[i].numCase].type == "chance" ){
-                    displayInfo(`$ : vous etre sur un case chance`,players[i])
+                    displayInfo(` : vous etre sur un case chance`,players[i])
                     let chanceNum = Math.floor(Math.random()*7)
                     switch(chanceNum){
                         case 0: 
@@ -69,27 +69,29 @@ export function play(){
                         players[i].money-=taxes
                         displayInfo(`les impots vous on ratraper vous payez ${taxes}$ d'impot`,players[i])
                         nextRound()
+                        displayInfo(` les impots vous on ratraper vous payez ${taxes}$ d'impot`,players[i])
                         break;
                         case 2: 
-                        displayInfo(`vous faites un tour complet en passant par la case depart`,players[i])
+                        displayInfo(` vous faites un tour complet en passant par la case depart`,players[i])
                         players[i].money+=500
                         nextRound()
                         break;
                         case 3: 
-                        displayInfo(`il y a un bug dans la banque, vous recever un virement de 300$`,players[i])
+                        displayInfo(` il y a un bug dans la banque, vous recever un virement de 300$`,players[i])
                         players[i].money+=300
                         nextRound()
                         break;
                         case 4: 
-                        displayInfo(`vente forduleuse, vous avez vendu une carte graphique qui a servis a vendre de la cryptomonay. vous aller directement en case prison sans passer par la case depart`,players[i])
+                        displayInfo(` vente forduleuse, vous avez vendu une carte graphique qui a servis a vendre de la cryptomonay. vous aller directement en case prison sans passer par la case depart`,players[i])
                         players[i].axe=2
                         players[i].pos=1
-                        players[i].prison = true
+                        players[i].numCase=8
+                        players[i].prison=true
                         nextRound()
                         break;
                         case 5: 
-                        displayInfo(`vous etes d'humeur genereuse et donner donc 150$ a tous les autres joueurs`,players[i])
-                        players[i].money-=150*players.length
+                        displayInfo(` vous etes d'humeur genereuse et donner donc 150$ a tous les autres joueurs`,players[i])
+                        players[i].money-=150*players.length-1
                         for(playerloop of players){
                             if(playerloop!=players[i]){
                                 playerloop.money+=150
@@ -98,9 +100,10 @@ export function play(){
                         nextRound()
                         break;
                         case 6: 
-                        displayInfo(`aller directement a la case Alienware m16`,players[i])
+                        displayInfo(` aller directement a la case Alienware m16`,players[i])
                         players[i].axe=4
                         players[i].pos=8
+                        players[i].numCase=31
                         break;
                     }
                     
@@ -140,6 +143,7 @@ export function play(){
                     displayTour()
                 }else if(stockData[players[i].numCase].type == "prison" ){
                     displayInfo(` : vous etre sur un case prison`,players[i] )
+                    players[i].prison=true
                     nextRound()
                 }else if(stockData[players[i].numCase].type == "taxe"){
                     let taxes = 0

@@ -376,6 +376,7 @@ export function update(){
                 div.append(prixRAM)
                 div.append(prixCPU)
             }else{
+                name.innerHTML += ":  loyer de "+found.getRentPrice(cases, players[i])+"$"
                 div.style.backgroundColor = "#B8860B"
                 console.log("test");
             }

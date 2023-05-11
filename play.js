@@ -230,7 +230,6 @@ export const nextRound = () => {
             displayInfo(": c'est a votre tour de jouer",players[0])
         }
     }
-    console.log(perso())
     update()
 }
 
@@ -269,7 +268,6 @@ export const displayUpgrade = () => {
     }
     ugrade.style.display = "flex";
     update()
-    console.log("test");
 }
 
 function updateComputer() {
@@ -332,7 +330,6 @@ function TourDuMonde(){
 export const buyComputer = () => {
     for (let i=0 ; i<players.length; i++){
         if(players[i].round === true){
-            console.log(players[i].money, cases[players[i].numCase].price);
             if(players[i].money >= cases[players[i].numCase].price){
                 cases[players[i].numCase].owner=players[i].name
                 players[i].money-=cases[players[i].numCase].price
@@ -354,7 +351,6 @@ export function update(){
         let newProper = document.createElement("div");
         newProper.id = players[i].name +"properties"
         let properties = players[i].displayProperties(cases)
-        console.log(`${players[i].name} : ${properties}`);
         for(var y= 0; y < properties.length; y++){
             let div = document.createElement("div");
             let name = document.createElement("p");
@@ -365,7 +361,6 @@ export function update(){
             div.id = "propertie"
             div.append(nbcase)
             div.append(name)
-            console.log(found.type);
             if(found.type == "computer" ){
                 name.innerHTML += ":  loyer de "+found.getRentPrice()+"$"
                 div.style.backgroundColor = found.couleur
@@ -378,7 +373,6 @@ export function update(){
             }else{
                 name.innerHTML += ":  loyer de "+found.getRentPrice(cases, players[i])+"$"
                 div.style.backgroundColor = "#B8860B"
-                console.log("test");
             }
             newProper.append(div)
         }

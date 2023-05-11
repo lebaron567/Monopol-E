@@ -311,7 +311,7 @@ function displayTour(){
 }
 function TourDuMonde(){
     let x2 = document.getElementById("tour").value
-    player =perso()
+    let player =perso()
     if(x2>25){
         player.pos=x2-24
     }else{
@@ -320,7 +320,7 @@ function TourDuMonde(){
         player.pose=x%8
     }
     document.getElementById("tourDuMonde").style.display ="none"
-    perso.throw = false
+    nextRound()
 }
 
 export const buyComputer = () => {

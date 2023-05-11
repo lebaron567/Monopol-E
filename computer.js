@@ -20,11 +20,16 @@ export class Computer{
         this.isBoosted=false
     }
     getRentPrice(){
+        let res
         if(this.indexUpgrade==null){
-            return this.rent
+            res = this.rent
         }else{
-            return this.upgrade[this.indexUpgrade]
+            res = this.upgrade[this.indexUpgrade]
         }
+        if(this.isBoosted==true){
+            res*=1.5
+        }
+        return res
     }
 
 }
